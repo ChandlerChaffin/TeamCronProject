@@ -96,6 +96,13 @@ var PPLevelSelectState = {
       .to({ x: 0.9, y: 0.9 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
+    // add keys 1 2 3 that call to the defined onClick functions below
+    this.key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
+    this.key2 = this.input.keyboard.addKey(Phaser.Keyboard.TWO);
+    this.key3 = this.input.keyboard.addKey(Phaser.Keyboard.THREE);
+    this.key1.onDown.add(this.buttonActions.onClickOne, this);	  
+    this.key2.onDown.add(this.buttonActions.onClickTwo, this);	  
+    this.key3.onDown.add(this.buttonActions.onClickThree, this);	  
 
     // Mute button
     createMuteButton(this);
@@ -114,7 +121,7 @@ var PPLevelSelectState = {
     AudioManager.playSong("title_music", this);
   },
   update: function () {
-    updateCloudSprites(this);
+  updateCloudSprites(this);
   },
   buttonActions: {
     onClickOne: function () {

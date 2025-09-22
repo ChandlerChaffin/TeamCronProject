@@ -133,6 +133,9 @@ var PPIntroState = {
       },
       this
     );
+    // enter key to progress through intro texts
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
   },
   update: function () {
     updateCloudSprites(this);

@@ -205,6 +205,8 @@ var IntroState = {
 
     // Mute button
     createMuteButton(this);
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
   },
   update: function () {
     updateCloudSprites(this);

@@ -85,6 +85,11 @@ var ChooseGameState = {
 
     // Audio
     AudioManager.playSong("title_music", this);
+    // Keyboard input 1 or 2 for ff and pp game
+    this.key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
+    this.key2 = this.input.keyboard.addKey(Phaser.Keyboard.TWO);
+    this.key1.onDown.add(this.ffButtonActions.onClick, this);
+    this.key2.onDown.add(this.ppButtonActions.onClick, this);
   },
   update: function () {
     updateCloudSprites(this);
