@@ -421,6 +421,10 @@ var PPResultState = {
       1
     );
     this.pauseButton.scale.setTo(0.75);
+    // enter to progress
+    this.keyEnter = this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.Enter);
+    this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
+
   },
   update: function () {},
   nextButtonActions: {

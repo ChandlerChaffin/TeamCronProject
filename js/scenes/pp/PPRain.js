@@ -124,6 +124,9 @@ var PPRainState = {
 
     // Play sound
     AudioManager.playSound("rain_sfx", this);
+    // enter to progress
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
   },
   update: function () {},
   nextButtonActions: {
