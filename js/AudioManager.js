@@ -46,17 +46,22 @@ var muteButtonActions = {
 function createMuteButton(scene) {
   var indexAB = AudioManager.indexAB;
   var indexC = AudioManager.indexC;
+  // Attaching muteButtonActions to scene
+  scene.muteButtonActions = muteButtonActions;
+  
   scene.muteButton = scene.add.button(
     0.892 * WIDTH,
     0.02 * HEIGHT,
     "button_sound",
-    muteButtonActions.onClick,
+    // ADDED SCENE below 
+    scene.muteButtonActions.onClick,
     scene,
     indexAB,
     indexAB,
     indexC
   );
   scene.muteButton.scale.setTo(0.75);
+  scene.input.keyboard.addKey(Phaser.Keyboard.M).onDown.add(scene.muteButtonActions.onClick, scene);
   return scene.muteButton;
 }
 

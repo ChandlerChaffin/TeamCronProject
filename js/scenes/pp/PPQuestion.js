@@ -56,22 +56,23 @@ var PPQuestionState = {
 
     // Choice Buttons
     var buttonWidth = WIDTH * (options.length == 3 ? 0.33 : 0.42);
-    for (var i = 0; i < PPGame.optionOrder.length; ++i) {
-      var onClick = function (ref) {
-        PPGame.chosenOptionId = ref.optionIndex;
+    for (let i = 0; i < PPGame.optionOrder.length; ++i) {
+      const optEntry = PPGame.optionOrder[i];
+      const  onClick = function () {
+        PPGame.chosenOptionId = optEntry.id;
         PPGame.scoreLock = false;
         PPGame.optionOrder = [];
         AudioManager.playSound("bloop_sfx", this);
         this.state.start("PPRainState");
       };
-      var xOffset =
+      const xOffset =
         0.5 * WIDTH -
         buttonWidth * (PPGame.optionOrder.length - 1) * 0.5 +
         buttonWidth * i;
-      var optionButton = this.add.button(
+      const optionButton = this.add.button(
         xOffset,
         0.68 * HEIGHT,
-        PPGame.optionOrder[i].obj.name,
+        optEntry.obj.name,
         onClick,
         this,
         0,
@@ -85,6 +86,8 @@ var PPQuestionState = {
         .to({ x: 0.95, y: 0.95 }, 600, "Linear", true)
         .yoyo(true, 0)
         .loop(true);
+      // each loop adds key binding to button 
+      this.input.keyboard.addKey(Phaser.Keyboard.ONE + i).onDown.add(onClick, this);
     }
 
     // Play music
