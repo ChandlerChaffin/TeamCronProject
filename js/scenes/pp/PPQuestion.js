@@ -123,7 +123,7 @@ var PPQuestionState = {
 		}});
 	var focus = PPGame.optionOrder[index];
 	if (focus && focus.button){
-		focus.button.tint = 0xFFAA00;
+		focus.button.tint = 0x32CD32;
 	}
   },
 };

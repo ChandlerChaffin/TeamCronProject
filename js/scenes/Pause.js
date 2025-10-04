@@ -106,6 +106,7 @@ var PauseState = {
 	//focus index and button array for cycling. 
 	this.focusIndex = 0;
 	this.buttons = [this.resumeButton, this.restartButton, this.homeButton, this.muteButton];
+	this.updateButtonHighlight();
 	this.keyTab.onDown.add(this.cycleFocus, this);
 	this.keyEnter.onDown.add(this.activateButton, this);
   },
@@ -158,7 +159,7 @@ var PauseState = {
 		for (var i = 0; i <this.buttons.length; i++) {
 			var btn = this.buttons[i];
 			if (i === this.focusIndex) {
-				btn.tint = 0xFFAA00;
+				btn.tint = 0xFFD700;
 			}
 			else {
 				btn.tint = 0xffffff;

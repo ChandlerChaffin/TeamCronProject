@@ -107,6 +107,7 @@ var PPLevelSelectState = {
 	//focus index 
 	this.focusIndex = 0;
 	this.buttons = [this.level1Btn, this.level2Btn, this.level3Btn];
+	this.updateButtonHighlight();
 	this.keyTab.onDown.add(this.cycleFocus, this);
 	this.keyEnter.onDown.add(this.activateButton, this);
 
@@ -167,7 +168,7 @@ var PPLevelSelectState = {
   	for (var i = 0; i < this.buttons.length; i++) {
 		var btn = this.buttons[i];
 		if (i === this.focusIndex) {
-			btn.tint = 0xFFD700;
+			btn.tint = 0x32CD32;
 		}
 		else {
 			btn.tint = 0xffffff;

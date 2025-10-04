@@ -94,6 +94,7 @@ var ChooseGameState = {
 	// focus index and button array for cycleing through
 	this.focusIndex = 0;
 	this.buttons = [this.ffButton, this.ppButton];
+	this.updateButtonHighlight();
 	this.keyTab.onDown.add(this.cycleFocus, this);
 	this.keyEnter.onDown.add(this.activateButton, this);
   },
@@ -128,7 +129,7 @@ var ChooseGameState = {
   	for (var i = 0; i <this.buttons.length; i++) {
 		var btn = this.buttons[i];
 		if (i === this.focusIndex) {
-			btn.tint = 0xFFAA00; 
+			btn.tint = 0xFFD700; 
 		}
 		else {
 			btn.tint = 0xffffff;
