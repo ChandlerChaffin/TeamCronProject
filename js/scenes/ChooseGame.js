@@ -46,6 +46,7 @@ var ChooseGameState = {
       0,
       1
     );
+	this.ffButton.inputEnabled = true;
     this.ffButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.ffButton.scale)
@@ -63,6 +64,7 @@ var ChooseGameState = {
       0,
       1
     );
+	this.ppButton.inputEnabled = true;
     this.ppButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.ppButton.scale)
@@ -85,11 +87,15 @@ var ChooseGameState = {
 
     // Audio
     AudioManager.playSong("title_music", this);
-    // Keyboard input 1 or 2 for ff and pp game
-    this.key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
-    this.key2 = this.input.keyboard.addKey(Phaser.Keyboard.TWO);
-    this.key1.onDown.add(this.ffButtonActions.onClick, this);
-    this.key2.onDown.add(this.ppButtonActions.onClick, this);
+	// Keyboard input tab/enter
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	this.input.keyboard.addKeyCapture(Phaser.Keyboard.TAB);
+	// focus index and button array for cycleing through
+	this.focusIndex = 0;
+	this.buttons = [this.ffButton, this.ppButton];
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -105,5 +111,28 @@ var ChooseGameState = {
       AudioManager.playSound("bloop_sfx", this);
       this.state.start("PPIntroState");
     },
+  },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	if (this.focusIndex === 0)  {
+		this.ffButtonActions.onClick.call(this);
+	}
+	else { 
+		this.ppButtonActions.onClick.call(this);
+	}
+  },
+  updateButtonHighlight: function() {
+  	for (var i = 0; i <this.buttons.length; i++) {
+		var btn = this.buttons[i];
+		if (i === this.focusIndex) {
+			btn.tint = 0xFFAA00; 
+		}
+		else {
+			btn.tint = 0xffffff;
+		}
+	}
   },
 };

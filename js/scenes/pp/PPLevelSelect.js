@@ -56,6 +56,7 @@ var PPLevelSelectState = {
       0,
       1
     );
+	this.level1Btn.inputEnabled = true;
     this.level1Btn.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.level1Btn.scale)
@@ -73,6 +74,7 @@ var PPLevelSelectState = {
       0,
       1
     );
+	this.level2Btn.inputEnabled = true;
     this.level2Btn.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.level2Btn.scale)
@@ -90,19 +92,23 @@ var PPLevelSelectState = {
       0,
       1
     );
+	this.level3Btn.inputEnabled = true;
     this.level3Btn.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.level3Btn.scale)
       .to({ x: 0.9, y: 0.9 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
-    // add keys 1 2 3 that call to the defined onClick functions below
-    this.key1 = this.input.keyboard.addKey(Phaser.Keyboard.ONE);
-    this.key2 = this.input.keyboard.addKey(Phaser.Keyboard.TWO);
-    this.key3 = this.input.keyboard.addKey(Phaser.Keyboard.THREE);
-    this.key1.onDown.add(this.buttonActions.onClickOne, this);	  
-    this.key2.onDown.add(this.buttonActions.onClickTwo, this);	  
-    this.key3.onDown.add(this.buttonActions.onClickThree, this);	  
+
+    //Keyboard input tab/enter 
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	this.input.keyboard.addKeyCapture(Phaser.Keyboard.TAB);
+	//focus index 
+	this.focusIndex = 0;
+	this.buttons = [this.level1Btn, this.level2Btn, this.level3Btn];
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
 
     // Mute button
     createMuteButton(this);
@@ -139,5 +145,33 @@ var PPLevelSelectState = {
       AudioManager.playSound("bloop_sfx", this);
       this.state.start("PPQuestionState");
     },
+  },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1 ) % this.buttons.length;
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	switch (this.focusIndex) {
+		case 0:
+			this.buttonActions.onClickOne.call(this);
+			break;
+		case 1: 
+			this.buttonActions.onClickTwo.call(this);
+			break;
+		case 2: 
+			this.buttonActions.onClickThree.call(this);
+			break;
+	}
+  },
+  updateButtonHighlight: function() {
+  	for (var i = 0; i < this.buttons.length; i++) {
+		var btn = this.buttons[i];
+		if (i === this.focusIndex) {
+			btn.tint = 0xFFD700;
+		}
+		else {
+			btn.tint = 0xffffff;
+		}
+	}
   },
 };

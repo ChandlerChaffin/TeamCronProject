@@ -53,7 +53,9 @@ var PPQuestionState = {
       1
     );
     this.pauseButton.scale.setTo(0.75);
-
+	this.pauseButton.inputEnabled = true;
+	//Press P for pause
+	this.keyP = this.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(onPause,this);
     // Choice Buttons
     var buttonWidth = WIDTH * (options.length == 3 ? 0.33 : 0.42);
     for (let i = 0; i < PPGame.optionOrder.length; ++i) {
@@ -79,6 +81,7 @@ var PPQuestionState = {
         0,
         0
       );
+	  optionButton.inputEnabled = true;
       optionButton.anchor.setTo(0.5, 0.5);
       optionButton.optionIndex = PPGame.optionOrder[i].id;
       this.add
@@ -86,12 +89,41 @@ var PPQuestionState = {
         .to({ x: 0.95, y: 0.95 }, 600, "Linear", true)
         .yoyo(true, 0)
         .loop(true);
-      // each loop adds key binding to button 
-      this.input.keyboard.addKey(Phaser.Keyboard.ONE + i).onDown.add(onClick, this);
+	  optEntry.button = optionButton;
+	  optionButton.cb = onClick;
     }
 
     // Play music
     AudioManager.playSong("pp_music", this);
+
+	//Keyboard input tab/enter
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	// block default 
+	this.input.keyboard.addKeyCapture(Phaser.Keyboard.TAB);
+	this.input.keyboard.addKeyCapture(Phaser.Keyboard.ENTER);
+	//tracking focus
+	this.focusIndex = 0;
+	this.highlightOption(this.focusIndex);
+	// actions for keytab and keyenter
+	this.keyTab.onDown.add(() => {
+		this.focusIndex = (this.focusIndex + 1) % PPGame.optionOrder.length;
+		this.highlightOption(this.focusIndex);}, this);
+	this.keyEnter.onDown.add(() => {
+		const entry = PPGame.optionOrder[this.focusIndex];
+		entry.button.cb.call(this);
+		}, this);
+
   },
   update: function () {},
+  highlightOption: function(index) {
+  	PPGame.optionOrder.forEach(entry => { 
+		if (entry.button) {
+			entry.button.tint = 0xffffff;
+		}});
+	var focus = PPGame.optionOrder[index];
+	if (focus && focus.button){
+		focus.button.tint = 0xFFAA00;
+	}
+  },
 };
