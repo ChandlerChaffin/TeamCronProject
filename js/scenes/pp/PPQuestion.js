@@ -6,6 +6,8 @@ var PPQuestionState = {
     var level = PPGameData.levels[PPGame.levelId];
     var question = level[PPGame.questionId];
     var options = question.options;
+    
+    
 
     // Randomize options
     if (PPGame.optionOrder.length == 0) {
@@ -14,6 +16,7 @@ var PPQuestionState = {
         randomOptions.push({
           id: i,
           obj: options[i],
+          audio: options[i].audio,
         });
       }
       shuffleArray(randomOptions);
@@ -32,7 +35,8 @@ var PPQuestionState = {
 
     // Question Image Sprite
     this.questionImageSprite = this.add.sprite(0, 0, question.name);
-
+    //Play Question Narration
+    AudioManager.playSound(question.qaudio,this);
     // Mute button
     createMuteButton(this);
 
@@ -91,6 +95,7 @@ var PPQuestionState = {
         .loop(true);
 	  optEntry.button = optionButton;
 	  optionButton.cb = onClick;
+    optionButton.audio = optEntry.audio
     }
 
     // Play music
@@ -104,11 +109,10 @@ var PPQuestionState = {
 	this.input.keyboard.addKeyCapture(Phaser.Keyboard.ENTER);
 	//tracking focus
 	this.focusIndex = 0;
-	this.highlightOption(this.focusIndex);
 	// actions for keytab and keyenter
 	this.keyTab.onDown.add(() => {
-		this.focusIndex = (this.focusIndex + 1) % PPGame.optionOrder.length;
-		this.highlightOption(this.focusIndex);}, this);
+		this.highlightOption(this.focusIndex);
+    this.focusIndex = (this.focusIndex + 1) % PPGame.optionOrder.length;}, this);
 	this.keyEnter.onDown.add(() => {
 		const entry = PPGame.optionOrder[this.focusIndex];
 		entry.button.cb.call(this);
@@ -121,9 +125,10 @@ var PPQuestionState = {
 		if (entry.button) {
 			entry.button.tint = 0xffffff;
 		}});
-	var focus = PPGame.optionOrder[index];
-	if (focus && focus.button){
-		focus.button.tint = 0x32CD32;
-	}
+	  var focus = PPGame.optionOrder[index];
+	  if (focus && focus.button){
+		  focus.button.tint = 0x32CD32;
+      AudioManager.playSound(focus.audio,this);
+	  }
   },
 };
