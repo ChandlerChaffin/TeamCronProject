@@ -54,6 +54,7 @@ var PPScoreState = {
       0,
       1
     );
+	this.homeButton.inputEnabled = true;
     this.homeButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.homeButton.scale)
@@ -71,12 +72,15 @@ var PPScoreState = {
       0,
       1
     );
+	this.replayButton.inputEnabled = true;
     this.replayButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.replayButton.scale)
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
+
+	//Enter and tab key
 
     // Mute button
     createMuteButton(this);
@@ -96,6 +100,17 @@ var PPScoreState = {
 
     // Audio
     AudioManager.playSong("results_music", this);
+
+	// Tab/Enter keys
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	// focus index and button array
+	this.focusIndex = 0;
+	this.buttons = [this.homeButton, this.replayButton];
+	this.updateButtonHighlight();
+	//key push actions
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -111,5 +126,28 @@ var PPScoreState = {
       AudioManager.playSound("bloop_sfx", this);
       this.state.start("PPLevelSelectState");
     },
+  },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	if (this.focusIndex === 0) {
+		this.homeButtonActions.onClick.call(this);
+	}
+	else {
+		this.replayButtonActions.onClick.call(this);
+	}
+  },
+  updateButtonHighlight: function() {
+  	for (var i = 0; i < this.buttons.length; i++) {
+		var btn = this.buttons[i];
+		if (i === this.focusIndex) {
+			btn.tint = 0xFFD700;
+		}
+		else {
+			btn.tint = 0xffffff;
+		}
+	}
   },
 };

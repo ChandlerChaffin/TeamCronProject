@@ -51,6 +51,11 @@ var TitleState = {
 
     // Audio
     AudioManager.playSong("title_music", this);
+
+    //Keyboard-Input-EnterProg
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.playButtonActions.onClick, this);
+
   },
   update: function () {
     updateCloudSprites(this);

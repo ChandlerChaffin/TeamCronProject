@@ -44,6 +44,7 @@ var PauseState = {
       0,
       1
     );
+	this.resumeButton.inputEnabled = true;
     this.resumeButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.resumeButton.scale)
@@ -61,6 +62,7 @@ var PauseState = {
       0,
       1
     );
+	this.restartButton.inputEnabled = true;
     this.restartButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.restartButton.scale)
@@ -78,6 +80,7 @@ var PauseState = {
       0,
       1
     );
+	this.homeButton.inputEnabled = true;
     this.homeButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.homeButton.scale)
@@ -87,6 +90,7 @@ var PauseState = {
 
     // Mute Button
     this.muteButton = createMuteButtonPos(this, 0.6, 0.77);
+	this.muteButton.inputEnabled = true;
     this.muteButton.anchor.setTo(0.5, 0.5);
     this.muteButton.scale.setTo(1.0, 1.0);
     this.add
@@ -94,6 +98,17 @@ var PauseState = {
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
+
+	//Keyboard input tab/enter
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	this.input.keyboard.addKeyCapture(Phaser.Keyboard.TAB);
+	//focus index and button array for cycling. 
+	this.focusIndex = 0;
+	this.buttons = [this.resumeButton, this.restartButton, this.homeButton, this.muteButton];
+	this.updateButtonHighlight();
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -120,4 +135,35 @@ var PauseState = {
       this.state.start("ChooseGameState");
     },
   },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	switch (this.focusIndex) {
+		case 0:
+			this.resumeButtonActions.onClick.call(this);
+			break;
+		case 1:
+			this.restartButtonActions.onClick.call(this);
+			break;
+		case 2:
+			this.homeButtonActions.onClick.call(this);
+			break;
+		case 3:
+			this.muteButtonActions.onClick.call(this);
+			break;
+  	 }
+   },
+   updateButtonHighlight: function() {
+		for (var i = 0; i <this.buttons.length; i++) {
+			var btn = this.buttons[i];
+			if (i === this.focusIndex) {
+				btn.tint = 0xFFD700;
+			}
+			else {
+				btn.tint = 0xffffff;
+			}
+		}
+	},
 };

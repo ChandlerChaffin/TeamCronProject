@@ -103,6 +103,7 @@ var PPRainState = {
       1
     );
     this.pauseButton.scale.setTo(0.75);
+	this.pauseButton.inputEnabled = true;
 
     // Start Animation
     this.nextDelay = 1000;
@@ -124,6 +125,11 @@ var PPRainState = {
 
     // Play sound
     AudioManager.playSound("rain_sfx", this);
+    // enter to progress
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
+	// P to pause
+  	this.keyP = this.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(onPause, this);
   },
   update: function () {},
   nextButtonActions: {
