@@ -102,6 +102,7 @@ var LoadState = {
     this.load.audio("correct_sfx", "audio/ding.mp3");
     this.load.audio("wrong_sfx", "audio/Sludge.mp3");
     this.load.audio("bloop_sfx", "audio/Bloop.mp3");
+
     //Intro Narration
     this.load.audio("intro1","audio/Intro1.mp3");
     this.load.audio("intro2","audio/Intro2.mp3");
@@ -111,6 +112,64 @@ var LoadState = {
     this.load.audio("Choose","audio/ChooseGame.mp3");
     this.load.audio("Title_PP","audio/PPTitle.mp3");
     this.load.audio("Title_FF","audio/FFTitle.mp3");
+
+    //PP Level 1 narration
+    this.load.audio("PPquestion1_1","audio/PPQuestion1_1.mp3")
+    this.load.audio("PPquestion1_1_a","audio/PPQuestion1_1_a.mp3");
+    this.load.audio("PPquestion1_1_b","audio/PPQuestion1_1_b.mp3");
+    this.load.audio("PPquestion1_1_c","audio/PPQuestion1_1_c.mp3");
+    this.load.audio("PPquestion1_2","audio/PPQuestion1_2.mp3");
+    this.load.audio("PPquestion1_2_a","audio/PPQuestion1_2_a.mp3");
+    this.load.audio("PPquestion1_2_b","audio/PPQuestion1_2_b.mp3");
+    this.load.audio("PPquestion1_3","audio/PPQuestion1_3.mp3");
+    this.load.audio("PPquestion1_3_a","audio/PPQuestion1_3_a.mp3");
+    this.load.audio("PPquestion1_3_b","audio/PPQuestion1_3_b.mp3");
+    this.load.audio("PPquestion1_3_c","audio/PPQuestion1_3_c.mp3");
+    this.load.audio("PPquestion1_4","audio/PPQuestion1_4.mp3");
+    this.load.audio("PPquestion1_4_a","audio/PPQuestion1_4_a.mp3");
+    this.load.audio("PPquestion1_4_b","audio/PPQuestion1_4_b.mp3");
+    this.load.audio("PPquestion1_5","audio/PPQuestion1_5.mp3");
+    this.load.audio("PPquestion1_5_a","audio/PPQuestion1_5_a.mp3");
+    this.load.audio("PPquestion1_5_b","audio/PPQuestion1_5_b.mp3");
+
+    //PP Level 2 narration
+    this.load.audio("PPquestion2_1","audio/PPQuestion2_1.mp3");
+    this.load.audio("PPquestion2_1_a","audio/PPQuestion2_1_a.mp3");
+    this.load.audio("PPquestion2_1_b","audio/PPQuestion2_1_b.mp3");
+    this.load.audio("PPquestion2_1_c","audio/PPQuestion2_1_c.mp3");
+    this.load.audio("PPquestion2_2","audio/PPQuestion2_1.mp3");
+    this.load.audio("PPquestion2_2_a","audio/PPQuestion2_2_a.mp3");
+    this.load.audio("PPquestion2_2_b","audio/PPQuestion2_2_b.mp3");
+    this.load.audio("PPquestion2_3","audio/PPQuestion2_3.mp3");
+    this.load.audio("PPquestion2_3_a","audio/PPQuestion2_3_a.mp3");
+    this.load.audio("PPquestion2_3_b","audio/PPQuestion2_3_b.mp3");
+    this.load.audio("PPquestion2_4","audio/PPQuestion2_4.mp3");
+    this.load.audio("PPquestion2_4_a","audio/PPQuestion2_4_a.mp3");
+    this.load.audio("PPquestion2_4_b","audio/PPQuestion2_4_b.mp3");
+    this.load.audio("PPquestion2_4_c","audio/PPQuestion2_4_c.mp3");
+    this.load.audio("PPquestion2_5","audio/PPQuestion2_5.mp3");
+    this.load.audio("PPquestion2_5_a","audio/PPQuestion2_5_a.mp3");
+    this.load.audio("PPquestion2_5_b","audio/PPQuestion2_5_b.mp3");
+    this.load.audio("PPquestion2_5_c","audio/PPQuestion2_5_c.mp3");
+
+    //PP level 3 narration 
+    this.load.audio("PPquestion3_1","audio/PPQuestion3_1.mp3");
+    this.load.audio("PPquestion3_1_a","audio/PPQuestion3_1_a.mp3");
+    this.load.audio("PPquestion3_1_b","audio/PPQuestion3_1_b.mp3");
+    this.load.audio("PPquestion3_2","audio/PPQuestion3_2.mp3");
+    this.load.audio("PPquestion3_2_a","audio/PPQuestion3_2_a.mp3");
+    this.load.audio("PPquestion3_2_b","audio/PPQuestion3_2_b.mp3");
+    this.load.audio("PPquestion3_3","audio/PPQuestion3_3.mp3");
+    this.load.audio("PPquestion3_3_a","audio/PPQuestion3_3_a.mp3");
+    this.load.audio("PPquestion3_3_b","audio/PPQuestion3_3_b.mp3");
+    this.load.audio("PPquestion3_4","audio/PPQuestion3_4.mp3");
+    this.load.audio("PPquestion3_4_a","audio/PPQuestion3_4_a.mp3");
+    this.load.audio("PPquestion3_4_b","audio/PPQuestion3_4_b.mp3");
+    this.load.audio("PPquestion3_5","audio/PPQuestion3_5.mp3");
+    this.load.audio("PPquestion3_5_a","audio/PPQuestion3_5_a.mp3");
+    this.load.audio("PPquestion3_5_b","audio/PPQuestion3_5_b.mp3");
+    this.load.audio("PPquestion3_5_c","audio/PPQuestion3_5_c.mp3");
+
 
 
     // Protect or Pollute
