@@ -133,6 +133,7 @@ var PPIntroState = {
       },
       this
     );
+    AudioManager.playSound("PPintro_1", this);
     // enter key to progress through intro texts
     this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
@@ -177,6 +178,7 @@ var PPIntroState = {
         this.professorSprite2.visible = true;
         this.speechText2.visible = true;
         this.wetlandsSprite.visible = true;
+        AudioManager.playSound("PPintro_2",this);
 
         this.add
           .tween(this.speechText2.scale)
@@ -199,6 +201,7 @@ var PPIntroState = {
       case 2:
         this.professorSprite3.visible = true;
         this.speechText3.visible = true;
+        AudioManager.playSound("PPintro_3", this);
 
         this.add
           .tween(this.speechText3.scale)
