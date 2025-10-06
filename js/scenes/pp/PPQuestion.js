@@ -112,7 +112,7 @@ var PPQuestionState = {
 	// actions for keytab and keyenter
 	this.keyTab.onDown.add(() => {
 		this.highlightOption(this.focusIndex);
-    this.focusIndex = (this.focusIndex + 1) % PPGame.optionOrder.length;}, this);
+    	this.focusIndex = (this.focusIndex + 1) % PPGame.optionOrder.length;}, this);
 	this.keyEnter.onDown.add(() => {
 		const entry = PPGame.optionOrder[this.focusIndex];
 		entry.button.cb.call(this);
@@ -128,7 +128,7 @@ var PPQuestionState = {
 	  var focus = PPGame.optionOrder[index];
 	  if (focus && focus.button){
 		  focus.button.tint = 0x32CD32;
-      AudioManager.playSound(focus.audio,this);
+		  AudioManager.playSound(focus.audio,this);
 	  }
   },
 };
