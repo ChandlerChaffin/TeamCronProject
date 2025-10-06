@@ -119,7 +119,7 @@ var LoadState = {
     this.load.audio("PPintro_3","audio/PPIntro3.mp3"); // done
 
     //PP Level 1 narration
-    this.load.audio("PPquestion1_1","audio/PPQuestion1_1.mp3")
+    this.load.audio("PPquestion1_1","audio/PPQuestion1_1.mp3");
     this.load.audio("PPquestion1_1_a","audio/PPQuestion1_1_a.mp3");
     this.load.audio("PPquestion1_1_b","audio/PPQuestion1_1_b.mp3");
     this.load.audio("PPquestion1_1_c","audio/PPQuestion1_1_c.mp3");
