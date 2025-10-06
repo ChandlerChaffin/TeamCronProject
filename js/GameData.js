@@ -132,6 +132,38 @@ var TextData = {
     "SEE HOW WELL YOU\nCAN DO!",
   ],
 };
+// ---- SR helper (local, no imports) ----
+function addAriaTextLocal(id, text, role) {
+  var el = document.getElementById(id);
+  if (!el) {
+    el = document.createElement('div');
+    el.id = id;
+    el.className = 'visually-hidden'; 
+    document.body.appendChild(el);
+  }
+  el.textContent = text;
+  if (role) el.setAttribute('role', role); else el.removeAttribute('role');
+  el.setAttribute('aria-live', 'polite'); 
+}
+
+// Normalize "\n" for screen readers
+function readableText(str) {
+  return String(str || '').replace(/\n+/g, ' ').replace(/\s{2,}/g, ' ').trim();
+}
+
+
+(function () {
+  var first = (Array.isArray(TextData.intro) ? TextData.intro[0] : TextData.intro) || '';
+  var firstReadable = readableText(first);
+  function run() {
+    if (firstReadable) addAriaTextLocal('intro-line', firstReadable, 'status');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
 
 var PPGameData = {
   resultsHeader: ["CORRECT!", "OOPS!"],
