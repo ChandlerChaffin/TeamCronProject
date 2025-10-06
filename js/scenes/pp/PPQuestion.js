@@ -114,7 +114,7 @@ var PPQuestionState = {
 		this.highlightOption(this.focusIndex);
     this.focusIndex = (this.focusIndex + 1) % PPGame.optionOrder.length;}, this);
 	this.keyEnter.onDown.add(() => {
-		const entry = PPGame.optionOrder[this.focusIndex];
+		const entry = PPGame.optionOrder[(this.focusIndex == 0) ? ((PPGame.optionOrder.length == 3) ? 2 : 1 ): this.focusIndex-1];
 		entry.button.cb.call(this);
 		}, this);
 
