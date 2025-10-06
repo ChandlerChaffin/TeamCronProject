@@ -112,6 +112,11 @@ var LoadState = {
     this.load.audio("Choose","audio/ChooseGame.mp3");
     this.load.audio("Title_PP","audio/PPTitle.mp3");
     this.load.audio("Title_FF","audio/FFTitle.mp3");
+    
+     //PP Narration 
+    this.load.audio("PPintro_1","audio/PPIntro1.mp3"); // done
+    this.load.audio("PPintro_2","audio/PPIntro2.mp3"); // done
+    this.load.audio("PPintro_3","audio/PPIntro3.mp3"); // done
 
     //PP Level 1 narration
     this.load.audio("PPquestion1_1","audio/PPQuestion1_1.mp3")
