@@ -102,6 +102,16 @@ var LoadState = {
     this.load.audio("correct_sfx", "audio/ding.mp3");
     this.load.audio("wrong_sfx", "audio/Sludge.mp3");
     this.load.audio("bloop_sfx", "audio/Bloop.mp3");
+    //Intro Narration
+    this.load.audio("intro1","audio/Intro1.mp3");
+    this.load.audio("intro2","audio/Intro2.mp3");
+    this.load.audio("intro3","audio/Intro3.mp3");
+    this.load.audio("intro4","audio/Intro4.mp3");
+    this.load.audio("intro5","audio/Intro5.mp3");
+    this.load.audio("Choose","audio/ChooseGame.mp3");
+    this.load.audio("Title_PP","audio/PPTitle.mp3");
+    this.load.audio("Title_FF","audio/FFTitle.mp3");
+
 
     // Protect or Pollute
     this.load.image("pp_question_text", "assets/pp/pp_question_text.png");
