@@ -71,7 +71,7 @@ var PauseState = {
       .loop(true);
 
     this.homeButton = this.add.button(
-      0.4 * WIDTH,
+      0.5 * WIDTH,
       0.77 * HEIGHT,
       "button_home",
       this.homeButtonActions.onClick,
@@ -89,7 +89,7 @@ var PauseState = {
       .loop(true);
 
     // Mute Button
-    this.muteButton = createMuteButtonPos(this, 0.6, 0.77);
+    this.muteButton = createMuteButtonPos(this, 0.7, 0.77);
 	this.muteButton.inputEnabled = true;
     this.muteButton.anchor.setTo(0.5, 0.5);
     this.muteButton.scale.setTo(1.0, 1.0);
@@ -98,6 +98,25 @@ var PauseState = {
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
+	this.narratorButton = createNarratorButtonPos(this,0.8,0.52,1.1); 
+	//Narration button 
+	//this.narratorButton = this.add.button(
+	//	0.8 * WIDTH,
+	//	0.52 * HEIGHT,
+	//	"button_home", //change later I am using home button as placeholder 
+	//	this.narratorButtonActions.onClick,
+	//	this,
+	//	0,
+	//	0,
+	//	1
+	//);
+	this.narratorButton.anchor.setTo(0.5,0.5);
+	this.add
+		.tween(this.narratorButton.scale)
+		.to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
+		.yoyo(true, 0)
+		.loop(true);
+
 
 	//Keyboard input tab/enter
 	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -105,7 +124,7 @@ var PauseState = {
 	this.input.keyboard.addKeyCapture(Phaser.Keyboard.TAB);
 	//focus index and button array for cycling. 
 	this.focusIndex = 0;
-	this.buttons = [this.resumeButton, this.restartButton, this.homeButton, this.muteButton];
+	this.buttons = [this.resumeButton, this.restartButton,this.narratorButton, this.homeButton, this.muteButton];
 	this.updateButtonHighlight();
 	this.keyTab.onDown.add(this.cycleFocus, this);
 	this.keyEnter.onDown.add(this.activateButton, this);
@@ -147,10 +166,13 @@ var PauseState = {
 		case 1:
 			this.restartButtonActions.onClick.call(this);
 			break;
-		case 2:
-			this.homeButtonActions.onClick.call(this);
+		case 2: 
+			this.narratorButtonActions.onClick.call(this);
 			break;
 		case 3:
+			this.homeButtonActions.onClick.call(this);
+			break;
+		case 4:
 			this.muteButtonActions.onClick.call(this);
 			break;
   	 }

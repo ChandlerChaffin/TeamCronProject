@@ -74,6 +74,8 @@ var ChooseGameState = {
 
     // Mute button
     createMuteButton(this);
+	// Narrator button
+	createNarratorButton(this);
 
     // Start Animation
     this.animationSpeed = 500;
@@ -87,7 +89,9 @@ var ChooseGameState = {
 
     // Audio
     AudioManager.playSong("title_music", this);
-    AudioManager.playSound("Choose",this);
+	if (narrator) {
+		AudioManager.playSound("Choose",this);
+	}
 
 	// Keyboard input tab/enter
 	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -119,10 +123,14 @@ var ChooseGameState = {
   	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
 	  this.updateButtonHighlight();
     if (this.focusIndex === 1) {
-      AudioManager.playSound("Title_PP",this);
+	  if (narrator) {
+		  AudioManager.playSound("Title_PP",this);
+	  }
     }
     else {
-      AudioManager.playSound("Title_FF",this);
+	  if (narrator) {
+		  AudioManager.playSound("Title_FF",this);
+	  }
     }
   },
   activateButton: function() {

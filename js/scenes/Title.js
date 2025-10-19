@@ -48,6 +48,8 @@ var TitleState = {
 
     // Mute button
     createMuteButton(this);
+	// Narrator button
+	createNarratorButtonPos(this, 0.4, 0.58,1.1);
 
     // Audio
     AudioManager.playSong("title_music", this);

@@ -15,7 +15,7 @@ function shuffleArray(array) {
   }
   return array;
 }
-
+var narrator = false;
 var LastState = "TitleState";
 var RestartState = "TitleState";
 

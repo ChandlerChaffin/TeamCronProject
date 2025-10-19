@@ -36,7 +36,9 @@ var PPQuestionState = {
     // Question Image Sprite
     this.questionImageSprite = this.add.sprite(0, 0, question.name);
     //Play Question Narration
-    AudioManager.playSound(question.qaudio,this);
+	if (narrator) {
+		AudioManager.playSound(question.qaudio,this);
+	}
     // Mute button
     createMuteButton(this);
 
@@ -128,7 +130,9 @@ var PPQuestionState = {
 	  var focus = PPGame.optionOrder[index];
 	  if (focus && focus.button){
 		  focus.button.tint = 0x32CD32;
-      AudioManager.playSound(focus.audio,this);
+		  if (narrator) {
+			  AudioManager.playSound(focus.audio,this);
+		  }
 	  }
   },
 };

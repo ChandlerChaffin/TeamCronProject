@@ -184,7 +184,9 @@ var IntroState = {
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
-    AudioManager.playSound("intro1",this);
+	if (narrator) {
+		AudioManager.playSound("intro1",this);
+	}
     // Start Animation
     this.nextDelay = 1000;
     this.animationSpeed = 500;
@@ -202,9 +204,13 @@ var IntroState = {
       },
       this
     );
+	
 
     // Mute button
     createMuteButton(this);
+	// Narrator Button
+	var narratorButton = createNarratorButton(this);
+
     this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
     this.input.keyboard.addKeyCapture(Phaser.Keyboard.ENTER);
@@ -220,22 +226,22 @@ var IntroState = {
       case 0:
         this.professorSprite1.visible = false;
         this.speechText1.visible = false;
-
+		this.narratorButton.destroy();
         this.nextButton.visible = false;
         break;
       case 1:
         this.professorSprite2.visible = false;
         this.speechBox1.visible = false;
         this.speechText2.visible = false;
-
+		this.narratorButton.destroy();
         this.nextButton.visible = false;
         break;
       case 2:
         this.professorSprite3.visible = false;
         this.infoBox1.visible = false;
+		this.narratorButton.destroy();
         this.speechText3_1.visible = false;
         this.speechText3_2.visible = false;
-
         this.nextButton.visible = false;
         break;
       case 3:
@@ -243,7 +249,7 @@ var IntroState = {
         this.infoBox2.visible = false;
         this.speechText4_1.visible = false;
         this.speechText4_2.visible = false;
-
+		this.narratorButton.destroy();
         this.nextButton.visible = false;
         break;
     }
@@ -256,7 +262,10 @@ var IntroState = {
       case 1:
         this.professorSprite2.visible = true;
         this.speechText2.visible = true;
-        AudioManager.playSound("intro2",this);
+		this.narratorButton = createNarratorButton(this);
+		if (narrator) {
+			AudioManager.playSound("intro2",this);
+		}
         this.add
           .tween(this.speechText2.scale)
           .from({ x: 0.0, y: 0.0 }, this.animationSpeed, "Elastic", true);
@@ -278,7 +287,10 @@ var IntroState = {
         this.infoBox1.visible = true;
         this.speechText3_1.visible = true;
         this.speechText3_2.visible = true;
-        AudioManager.playSound("intro3",this);
+		this.narratorButton = createNarratorButtonPos(this,0.02,0.02,0.75);
+		if (narrator) {
+			AudioManager.playSound("intro3",this);
+		}
 
         this.add
           .tween(this.speechBox2.scale)
@@ -306,7 +318,10 @@ var IntroState = {
         this.infoBox2.visible = true;
         this.speechText4_1.visible = true;
         this.speechText4_2.visible = true;
-        AudioManager.playSound("intro4",this);
+		this.narratorButton = createNarratorButtonPos(this,0.02,0.02,0.75);
+		if (narrator) {
+			AudioManager.playSound("intro4",this);
+		}
 
         this.add
           .tween(this.speechBox2.scale)
@@ -332,8 +347,10 @@ var IntroState = {
       case 4:
         this.professorSprite5.visible = true;
         this.speechText5.visible = true;
-        AudioManager.playSound("intro5",this);
-
+		this.narratorButton = createNarratorButtonPos(this,0.02, 0.02,0.75);
+		if (narrator) {
+			AudioManager.playSound("intro5",this);
+		}
         this.add
           .tween(this.speechBox2.scale)
           .from({ x: 0.0, y: 0.0 }, this.animationSpeed, "Elastic", true);
