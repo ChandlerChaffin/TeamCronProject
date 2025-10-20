@@ -115,6 +115,8 @@ var PPIntroState = {
 
     // Mute button
     createMuteButton(this);
+	// Narrator button
+	this.narratorButton = createNarratorButton(this);
 
     // Start Animation
     this.nextDelay = 1000;
@@ -154,13 +156,11 @@ var PPIntroState = {
         this.trashcanSprite.visible = false;
         this.dirtSprite.visible = false;
         this.dogSprite.visible = false;
-
         this.nextButton.visible = false;
         break;
       case 1:
         this.professorSprite2.visible = false;
         this.speechText2.visible = false;
-
         this.nextButton.visible = false;
         break;
       case 2:
@@ -180,6 +180,7 @@ var PPIntroState = {
         this.professorSprite2.visible = true;
         this.speechText2.visible = true;
         this.wetlandsSprite.visible = true;
+		createNarratorButton(this);
 		if (narrator) {
 			AudioManager.playSound("PPintro_2",this);
 		}
@@ -204,6 +205,7 @@ var PPIntroState = {
       case 2:
         this.professorSprite3.visible = true;
         this.speechText3.visible = true;
+		createNarratorButton(this);
 		if (narrator) {
 			AudioManager.playSound("PPintro_3", this);
 		}

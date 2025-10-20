@@ -113,6 +113,8 @@ var PPLevelSelectState = {
 
     // Mute button
     createMuteButton(this);
+	// Narrator Button 
+	createNarratorButton(this);
 
     // Start Animation
     this.animationSpeed = 500;

@@ -71,7 +71,7 @@ function createNarratorButton(scene) {
   scene.narratorButton = scene.add.button(
     0.892 * WIDTH,
     0.22 * HEIGHT,
-    "button_sound",
+    "button_sound", // change to new button
     scene.narratorButtonActions.onClick,
     scene,
     indexAB,
