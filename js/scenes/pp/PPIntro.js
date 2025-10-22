@@ -157,17 +157,20 @@ var PPIntroState = {
         this.dirtSprite.visible = false;
         this.dogSprite.visible = false;
         this.nextButton.visible = false;
+		this.narratorButton.destroy();
         break;
       case 1:
         this.professorSprite2.visible = false;
         this.speechText2.visible = false;
         this.nextButton.visible = false;
+		this.narratorButton.destroy();
         break;
       case 2:
         this.professorSprite3.visible = false;
         this.speechText3.visible = false;
 
         this.nextButton.visible = false;
+		this.narratorButton.destroy();
         break;
     }
 

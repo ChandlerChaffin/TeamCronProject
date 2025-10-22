@@ -4,6 +4,7 @@ var AudioManager = {
   init: function () {
     this.indexAB = 0;
     this.indexC = 1;
+    this.indexAB_n = 0;
   },
 
   toggleMusic: function (screen) {
@@ -41,13 +42,11 @@ var AudioManager = {
   	narrator = !narrator;
 	if (narrator) {
       screen.narratorButton.setFrames(0, 0, 0);
-      this.indexAB = 0;
-      this.indexC = 0;
+      this.indexAB_n = 0;
 	}
 	else {
 	  screen.narratorButton.setFrames(1,1,1);
-      this.indexAB = 1;
-      this.indexC = 1;
+      this.indexAB_n = 1;
 	}
   },
 };
@@ -64,8 +63,7 @@ var muteButtonActions = {
 };
 
 function createNarratorButton(scene) {
-  var indexAB = AudioManager.indexAB;
-  var indexC = AudioManager.indexC;
+  var indexAB_n = AudioManager.indexAB_n;
   scene.narratorButtonActions = narratorButtonActions;
   
   scene.narratorButton = scene.add.button(
@@ -74,9 +72,9 @@ function createNarratorButton(scene) {
     "button_narrator", // change to new button
     scene.narratorButtonActions.onClick,
     scene,
-    indexAB,
-    indexAB,
-    indexC
+    indexAB_n,
+    indexAB_n,
+    indexAB_n
   );
   scene.narratorButton.scale.setTo(0.75);
   scene.input.keyboard.addKey(Phaser.Keyboard.N).onDown.add(scene.narratorButtonActions.onClick, scene);
@@ -84,8 +82,7 @@ function createNarratorButton(scene) {
 }
 
 function createNarratorButtonPos(scene, x, y,scale) {
-  var indexAB = AudioManager.indexAB;
-  var indexC = AudioManager.indexC;
+  var indexAB_n = AudioManager.indexAB_n;
   scene.narratorButtonActions = narratorButtonActions;
   
   scene.narratorButton = scene.add.button(
@@ -94,9 +91,9 @@ function createNarratorButtonPos(scene, x, y,scale) {
     "button_narrator", // change to narrator button when created
     scene.narratorButtonActions.onClick,
     scene,
-    indexAB,
-    indexAB,
-    indexC
+    indexAB_n,
+    indexAB_n,
+    indexAB_n
   );
   scene.narratorButton.scale.setTo(scale);
   scene.input.keyboard.addKey(Phaser.Keyboard.N).onDown.add(scene.narratorButtonActions.onClick, scene);

@@ -129,7 +129,7 @@ var PPQuestionState = {
 		}});
 	  var focus = PPGame.optionOrder[index];
 	  if (focus && focus.button){
-		  focus.button.tint = 0x32CD32;
+		  focus.button.tint = 0x128228;
 		  if (narrator) {
 			  AudioManager.playSound(focus.audio,this);
 		  }

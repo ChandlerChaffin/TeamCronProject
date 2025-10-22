@@ -143,7 +143,7 @@ var PPScoreState = {
   	for (var i = 0; i < this.buttons.length; i++) {
 		var btn = this.buttons[i];
 		if (i === this.focusIndex) {
-			btn.tint = 0xFFD700;
+			btn.tint = 0xA149CA;
 		}
 		else {
 			btn.tint = 0xffffff;

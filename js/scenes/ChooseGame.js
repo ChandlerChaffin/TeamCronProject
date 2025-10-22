@@ -35,6 +35,44 @@ var ChooseGameState = {
     this.speechText1.lineSpacing = TextStyle.lineSpacing;
     this.speechText1.resolution = 2;
 
+	// Background buttons
+    this.ffButtonBack = this.add.button(
+      0.25 * WIDTH,
+      0.22 * HEIGHT,
+      "button_ff",
+      this.ffButtonActions.onClick,
+      this,
+      0,
+      0,
+      1
+    );
+    this.ffButtonBack.anchor.setTo(0.5, 0.5);
+	this.ffButtonBack.scale.setTo(1.05);
+    this.add
+      .tween(this.ffButtonBack.scale)
+      .to({ x: 0.9, y: 0.9 }, 600, "Linear", true)
+      .yoyo(true, 0)
+      .loop(true);
+
+    this.ppButtonBack = this.add.button(
+      0.75 * WIDTH,
+      0.22 * HEIGHT,
+      "button_pp",
+      this.ppButtonActions.onClick,
+      this,
+      0,
+      0,
+      1
+    );
+    this.ppButtonBack.anchor.setTo(0.5, 0.5);
+	this.ppButtonBack.scale.setTo(1.05);
+    this.add
+      .tween(this.ppButtonBack.scale)
+      .to({ x: 0.9, y: 0.9 }, 600, "Linear", true)
+      .yoyo(true, 0)
+      .loop(true);
+
+
     // Buttons
     this.ffButton = this.add.button(
       0.25 * WIDTH,
@@ -97,9 +135,11 @@ var ChooseGameState = {
 	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
 	this.input.keyboard.addKeyCapture(Phaser.Keyboard.TAB);
+	this.input.keyboard.addKeyCapture(Phaser.Keyboard.N);
 	// focus index and button array for cycleing through
 	this.focusIndex = 0;
 	this.buttons = [this.ffButton, this.ppButton];
+	this.buttonBacks = [this.ffButtonBack, this.ppButtonBack];
 	this.updateButtonHighlight();
 	this.keyTab.onDown.add(this.cycleFocus, this);
 	this.keyEnter.onDown.add(this.activateButton, this);
@@ -143,9 +183,9 @@ var ChooseGameState = {
   },
   updateButtonHighlight: function() {
   	for (var i = 0; i <this.buttons.length; i++) {
-		var btn = this.buttons[i];
+		var btn = this.buttonBacks[i];
 		if (i === this.focusIndex) {
-			btn.tint = 0xFFD700; 
+			btn.tint = 0xA44ABF; 
 		}
 		else {
 			btn.tint = 0xffffff;

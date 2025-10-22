@@ -91,7 +91,7 @@ var LoadState = {
       58
     );
 	//Narrator button
-	this.load.spritesheet("button_narrator", "assets/button/Narrator_button4.png",106,126);
+	this.load.spritesheet("button_narrator", "assets/button/Narrator_button4.png",127,130);
 
     // Audio
     this.load.audio("title_music", "audio/JoyInTheWorldNew.mp3");

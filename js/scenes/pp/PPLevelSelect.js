@@ -170,7 +170,7 @@ var PPLevelSelectState = {
   	for (var i = 0; i < this.buttons.length; i++) {
 		var btn = this.buttons[i];
 		if (i === this.focusIndex) {
-			btn.tint = 0x32CD32;
+			btn.tint = 0x12872A;
 		}
 		else {
 			btn.tint = 0xffffff;
