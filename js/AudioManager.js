@@ -40,14 +40,14 @@ var AudioManager = {
   toggleNarrator: function (screen) {
   	narrator = !narrator;
 	if (narrator) {
-      screen.narratorButton.setFrames(0, 0, 1);
+      screen.narratorButton.setFrames(0, 0, 0);
       this.indexAB = 0;
-      this.indexC = 1;
+      this.indexC = 0;
 	}
 	else {
-	  screen.narratorButton.setFrames(2,2,3);
-      this.indexAB = 2;
-      this.indexC = 3;
+	  screen.narratorButton.setFrames(1,1,1);
+      this.indexAB = 1;
+      this.indexC = 1;
 	}
   },
 };
@@ -71,7 +71,7 @@ function createNarratorButton(scene) {
   scene.narratorButton = scene.add.button(
     0.892 * WIDTH,
     0.22 * HEIGHT,
-    "button_sound", // change to new button
+    "button_narrator", // change to new button
     scene.narratorButtonActions.onClick,
     scene,
     indexAB,
@@ -91,7 +91,7 @@ function createNarratorButtonPos(scene, x, y,scale) {
   scene.narratorButton = scene.add.button(
     x * WIDTH,
     y * HEIGHT,
-    "button_sound", // change to narrator button when created
+    "button_narrator", // change to narrator button when created
     scene.narratorButtonActions.onClick,
     scene,
     indexAB,
