@@ -482,18 +482,17 @@ var PPGameData = {
             resultUpperText:
               "YOU PREVENTED POLLUTION AND KEPT\nTHE LOCAL WATERWAYS CLEAN!",
             resultLowerText:
-              "WHEN YOU WASH BRUSHES IN A SINK, THE DIRTY WATER\nIS SENT TO THE SEWER TO BE CLEANED.\n\n" +
-              "YOU CAN ALSO WASH THE BRUSHES IN YOUR YARD—JUST MAKE\nSURE THAT THE DIRTY WATER DOESN'T RUN OFF INTO THE STREET.",
+              "WHEN YOU WASH BRUSHES IN A SINK, THE DIRTY WATER\nIS SENT TO THE SEWER TO BE CLEANED.\n\n", 
           },
           {
             name: "pp_2_1b",
             audio: "PPquestion2_1_b",
-            correct: true,
+            correct: false,
             wetlands: {
-              overlay: 0,
+              overlay: 2,
               lilypad: true,
-              aliveFish: true,
-              deadFish: false,
+              aliveFish: false,
+              deadFish: true,
               soap: false,
               mulch: false,
               leaves: false,
@@ -501,10 +500,9 @@ var PPGameData = {
               bottle: false,
             },
             resultUpperText:
-              "YOU PREVENTED POLLUTION AND KEPT\nTHE LOCAL WATERWAYS CLEAN!",
+              "THAT SENT PAINT INTO THE GUTTERS, DOWN THE\nSTORMDRAIN AND POLLUTED LOCAL WATERWAYS!",
             resultLowerText:
-              "JUST MAKE SURE THE DIRTY WATER WILL NOT\nRUN INTO THE STREET.\n\n" +
-              "YOU CAN ALSO WASH BRUSHES IN THE SINK SO THE\nDIRTY WATER IS SENT TO THE SEWER TO BE CLEANED.",
+              "NEXT TIME, WASH BRUSHES IN A SINK SO THE DIRTY WATER\nIS SENT TO THE SEWER TO BE CLEANED.\n\n",
           },
           {
             name: "pp_2_1c",
@@ -524,8 +522,7 @@ var PPGameData = {
             resultUpperText:
               "THAT SENT PAINT INTO THE GUTTERS, DOWN THE\nSTORMDRAIN AND POLLUTED LOCAL WATERWAYS!",
             resultLowerText:
-              "NEXT TIME, WASH BRUSHES IN A SINK SO THE DIRTY WATER\nIS SENT TO THE SEWER TO BE CLEANED.\n\n" +
-              "YOU CAN ALSO WASH THE BRUSHES IN YOUR YARD—JUST MAKE\nSURE THAT THE DIRTY WATER DOESN'T RUN OFF INTO THE STREET.",
+              "NEXT TIME, WASH BRUSHES IN A SINK SO THE DIRTY WATER\nIS SENT TO THE SEWER TO BE CLEANED.\n\n", 
           },
         ],
       },
