@@ -36,6 +36,7 @@ var AudioManager = {
   playSound: function (title, state) {
     this.sound = state.add.audio(title, 0.25);
     this.sound.play();
+	return this.sound;
   },
 
   toggleNarrator: function (screen) {

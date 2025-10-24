@@ -185,7 +185,7 @@ var IntroState = {
       .yoyo(true, 0)
       .loop(true);
 	if (narrator) {
-		AudioManager.playSound("intro1",this);
+		this.currentsound = AudioManager.playSound("intro1",this);
 	}
     // Start Animation
     this.nextDelay = 1000;
@@ -264,7 +264,10 @@ var IntroState = {
         this.speechText2.visible = true;
 		this.narratorButton = createNarratorButton(this);
 		if (narrator) {
-			AudioManager.playSound("intro2",this);
+			if (this.currentsound && this.currentsound.isPlaying) {
+				  this.currentsound.stop();
+			}
+			this.currentsound = AudioManager.playSound("intro2",this);
 		}
         this.add
           .tween(this.speechText2.scale)
@@ -289,7 +292,10 @@ var IntroState = {
         this.speechText3_2.visible = true;
 		this.narratorButton = createNarratorButtonPos(this,0.02,0.02,0.75);
 		if (narrator) {
-			AudioManager.playSound("intro3",this);
+			if (this.currentsound && this.currentsound.isPlaying) {
+				  this.currentsound.stop();
+			}
+			this.currentsound = AudioManager.playSound("intro3",this);
 		}
 
         this.add
@@ -320,7 +326,10 @@ var IntroState = {
         this.speechText4_2.visible = true;
 		this.narratorButton = createNarratorButtonPos(this,0.02,0.02,0.75);
 		if (narrator) {
-			AudioManager.playSound("intro4",this);
+			if (this.currentsound && this.currentsound.isPlaying) {
+				  this.currentsound.stop();
+			}
+			this.currentsound = AudioManager.playSound("intro4",this);
 		}
 
         this.add
@@ -349,7 +358,10 @@ var IntroState = {
         this.speechText5.visible = true;
 		this.narratorButton = createNarratorButtonPos(this,0.02, 0.02,0.75);
 		if (narrator) {
-			AudioManager.playSound("intro5",this);
+			if (this.currentsound && this.currentsound.isPlaying) {
+				  this.currentsound.stop();
+			}
+			this.currentsound = AudioManager.playSound("intro5",this);
 		}
         this.add
           .tween(this.speechBox2.scale)
@@ -373,6 +385,9 @@ var IntroState = {
   },
   nextButtonActions: {
     onClick: function () {
+	  if (this.currentsound && this.currentsound.isPlaying) {
+		this.currentsound.stop();
+	  }
       AudioManager.playSound("bloop_sfx", this);
       this.nextSubScene();
     },

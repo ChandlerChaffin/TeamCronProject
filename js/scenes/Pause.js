@@ -98,18 +98,7 @@ var PauseState = {
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
-	this.narratorButton = createNarratorButtonPos(this,0.8,0.52,1.1); 
-	//Narration button 
-	//this.narratorButton = this.add.button(
-	//	0.8 * WIDTH,
-	//	0.52 * HEIGHT,
-	//	"button_home", //change later I am using home button as placeholder 
-	//	this.narratorButtonActions.onClick,
-	//	this,
-	//	0,
-	//	0,
-	//	1
-	//);
+	this.narratorButton = createNarratorButtonPos(this,0.8,0.52,1.0); 
 	this.narratorButton.anchor.setTo(0.5,0.5);
 	this.add
 		.tween(this.narratorButton.scale)

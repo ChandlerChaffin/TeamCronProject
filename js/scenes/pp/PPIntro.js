@@ -136,7 +136,7 @@ var PPIntroState = {
       this
     );
 	if (narrator) {
-		AudioManager.playSound("PPintro_1", this);
+		this.currentsound = AudioManager.playSound("PPintro_1", this);
 	}
     // enter key to progress through intro texts
     this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -185,7 +185,7 @@ var PPIntroState = {
         this.wetlandsSprite.visible = true;
 		createNarratorButton(this);
 		if (narrator) {
-			AudioManager.playSound("PPintro_2",this);
+			this.currentsound = AudioManager.playSound("PPintro_2",this);
 		}
         this.add
           .tween(this.speechText2.scale)
@@ -210,7 +210,7 @@ var PPIntroState = {
         this.speechText3.visible = true;
 		createNarratorButton(this);
 		if (narrator) {
-			AudioManager.playSound("PPintro_3", this);
+			this.currentsound = AudioManager.playSound("PPintro_3", this);
 		}
 
         this.add
@@ -235,6 +235,9 @@ var PPIntroState = {
   },
   nextButtonActions: {
     onClick: function () {
+	  if (this.currentsound && this.currentsound.isPlaying) {
+		  this.currentsound.stop();
+	  }
       AudioManager.playSound("bloop_sfx", this);
       this.nextSubScene();
     },

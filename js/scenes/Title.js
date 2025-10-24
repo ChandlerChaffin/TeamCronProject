@@ -49,7 +49,15 @@ var TitleState = {
     // Mute button
     createMuteButton(this);
 	// Narrator button
-	createNarratorButtonPos(this, 0.4, 0.58,1.1);
+	this.narratorButton = createNarratorButtonPos(this, 0.50, 0.68,1.0);
+	this.narratorButton.anchor.setTo(0.5, 0.5);
+    this.add
+      .tween(this.narratorButton.scale)
+      .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
+      .yoyo(true, 0)
+      .loop(true);
+
+	//Play narration and hotkey instructions 
 
     // Audio
     AudioManager.playSong("title_music", this);

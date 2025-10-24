@@ -128,7 +128,7 @@ var ChooseGameState = {
     // Audio
     AudioManager.playSong("title_music", this);
 	if (narrator) {
-		AudioManager.playSound("Choose",this);
+		this.currentsound = AudioManager.playSound("Choose",this);
 	}
 
 	// Keyboard input tab/enter
@@ -161,15 +161,21 @@ var ChooseGameState = {
   },
   cycleFocus: function() {
   	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
-	  this.updateButtonHighlight();
+	this.updateButtonHighlight();
     if (this.focusIndex === 1) {
 	  if (narrator) {
-		  AudioManager.playSound("Title_PP",this);
+	  	  if (this.currentsound && this.currentsound.isPlaying) {
+			  this.currentsound.stop();
+		  }
+		  this.currentsound = AudioManager.playSound("Title_PP",this);
 	  }
     }
     else {
 	  if (narrator) {
-		  AudioManager.playSound("Title_FF",this);
+	  	  if (this.currentsound && this.currentsound.isPlaying) {
+			  this.currentsound.stop();
+		  }
+		  this.currentsound = AudioManager.playSound("Title_FF",this);
 	  }
     }
   },
