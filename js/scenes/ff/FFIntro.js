@@ -126,6 +126,11 @@ var FFIntroState = {
 
     // Mute button
     createMuteButton(this);
+	//Narrator button
+	this.narratorButton = createNarratorButton(this);
+		// if (narrator) {
+		//     this.currentsound = AudioManager.playSound("FFintro_1",this);
+		// }
 
     // Start Animation
     this.nextDelay = 1000;
@@ -144,6 +149,8 @@ var FFIntroState = {
       },
       this
     );
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -156,25 +163,25 @@ var FFIntroState = {
       case 0:
         this.professorSprite1.visible = false;
         this.speechText1.visible = false;
-
         this.nextButton.visible = false;
+		this.narratorButton.destroy();
         break;
       case 1:
         this.professorSprite2.visible = false;
         this.speechText2.visible = false;
-
+		this.narratorButton.destroy();
         this.nextButton.visible = false;
         break;
       case 2:
         this.professorSprite3.visible = false;
         this.speechText3.visible = false;
-
+		this.narratorButton.destroy();
         this.nextButton.visible = false;
         break;
       case 3:
         this.professorSprite4.visible = false;
         this.speechText4.visible = false;
-
+		this.narratorButton.destroy();
         this.nextButton.visible = false;
         break;
     }
@@ -187,7 +194,10 @@ var FFIntroState = {
       case 1:
         this.professorSprite2.visible = true;
         this.speechText2.visible = true;
-
+		createNarratorButton(this);
+		// if (narrator) {
+		//     this.currentsound = AudioManager.playSound("FFintro_2",this);
+		// }
         this.add
           .tween(this.speechText2.scale)
           .from({ x: 0.0, y: 0.0 }, this.animationSpeed, "Elastic", true);
@@ -206,6 +216,10 @@ var FFIntroState = {
       case 2:
         this.professorSprite3.visible = true;
         this.speechText3.visible = true;
+		createNarratorButton(this);
+		// if (narrator) {
+		//     this.currentsound = AudioManager.playSound("FFintro_3",this);
+		// }
 
         this.add
           .tween(this.speechText3.scale)
@@ -225,6 +239,10 @@ var FFIntroState = {
       case 3:
         this.professorSprite4.visible = true;
         this.speechText4.visible = true;
+		createNarratorButton(this);
+		// if (narrator) {
+		//     this.currentsound = AudioManager.playSound("FFintro_4",this);
+		// }
 
         this.add
           .tween(this.speechText4.scale)
@@ -248,6 +266,9 @@ var FFIntroState = {
   },
   nextButtonActions: {
     onClick: function () {
+	  //if (this.currentsound && this.currentsound.isPlaying) {
+	  //	this.currentsound.stop();
+	  //}
       AudioManager.playSound("bloop_sfx", this);
       this.nextSubScene();
     },

@@ -12,7 +12,11 @@ var FFGameState = {
     // Options
     this.currentQuestionId = 0;
     this.optionSprites = [];
-
+	this.optionSpriteOutlines = [];
+	this.questionOptions = [];
+	this.spriteScreen = true;
+	this.focusSpriteIndex = 0;
+	this.focusQIndex = 0;
     // Audio
     AudioManager.playSong("ff_music", this);
 
@@ -37,6 +41,7 @@ var FFGameState = {
         .tween(outlineSprite)
         .to({ alpha: 0.1 }, 800, "Linear", true, 0, -1, true);
       this.topLayer.add(outlineSprite);
+	  this.optionSpriteOutlines.push(outlineSprite);
 
       var clickableSprite = this.add.sprite(
         spriteData.position.x * WIDTH,
@@ -53,6 +58,7 @@ var FFGameState = {
       clickableSprite.optionIndex = i;
       clickableSprite.inputEnabled = true;
       clickableSprite.input.useHandCursor = true;
+	  clickableSprite.cb = onClick;
       this.middleLayer.add(clickableSprite);
 
       var optionSprite = {
@@ -148,7 +154,7 @@ var FFGameState = {
       0.17 * WIDTH,
       -0.03 * HEIGHT,
       "ff_button_fix_it",
-      function () {
+      onClick = function () {
         this.startResult(true);
       },
       this,
@@ -157,6 +163,7 @@ var FFGameState = {
       1
     );
     this.fixItButton.anchor.setTo(0.5, 0.5);
+	this.fixItButton.cb = onClick;
     this.questionBoxGroup.add(this.fixItButton);
     this.add
       .tween(this.fixItButton.scale)
@@ -166,7 +173,7 @@ var FFGameState = {
       0.17 * WIDTH,
       0.12 * HEIGHT,
       "ff_button_its_ok",
-      function () {
+      onClick = function () {
         this.startResult(false);
       },
       this,
@@ -175,6 +182,7 @@ var FFGameState = {
       1
     );
     this.itsOkButton.anchor.setTo(0.5, 0.5);
+	this.itsOkButton.cb = onClick;
     this.questionBoxGroup.add(this.itsOkButton);
     this.add
       .tween(this.itsOkButton.scale)
@@ -185,6 +193,10 @@ var FFGameState = {
       0.05 * HEIGHT,
       ""
     );
+	//Adding question answer buttons to array.
+	this.questionOptions.push(this.itsOkButton);
+	this.questionOptions.push(this.fixItButton);
+
     this.questionImageSprite.anchor.setTo(0.5, 0.5);
     this.questionBoxGroup.add(this.questionImageSprite);
 
@@ -249,14 +261,15 @@ var FFGameState = {
     this.resultsImageSprite = this.add.sprite(0.0 * WIDTH, -0.145 * HEIGHT, "");
     this.resultsImageSprite.anchor.setTo(0.5, 0.5);
     this.resultsBoxGroup.add(this.resultsImageSprite);
+	var onNextButtonClick = function() {
+		this.closeResult();
+	};
 
     this.resultsNextButton = this.add.button(
       0.0 * WIDTH,
       0.39 * HEIGHT,
       "ff_button_next",
-      function () {
-        this.closeResult();
-      },
+	  onNextButtonClick,
       this,
       0,
       0,
@@ -264,9 +277,11 @@ var FFGameState = {
     );
     this.resultsNextButton.anchor.setTo(0.5, 0.5);
     this.resultsBoxGroup.add(this.resultsNextButton);
+	this.resultsNextButton.cb = onNextButtonClick;
     this.add
       .tween(this.resultsNextButton.scale)
       .to({ x: 0.9, y: 0.9 }, 600, "Linear", true, 0, -1, true);
+	  
 
     // Pause Button
     var onPause = function () {
@@ -285,9 +300,14 @@ var FFGameState = {
       1
     );
     this.pauseButton.scale.setTo(0.75);
-
+	this.keyP = this.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(onPause,this)
     // Mute Button
     createMuteButton(this);
+	// Narrator Button 
+	this.narratorButton = createNarratorButtonPos(this,0.02,0.02,0.75);
+	// key tab cycling and entering 
+	this.keyTAB = this.input.keyboard.addKey(Phaser.Keyboard.TAB).onDown.add(this.cycleFocus, this);
+	this.keyENTER = this.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.add(this.activateButton, this);
   },
   update: function () {},
   setOptionsClickable: function (clickable) {
@@ -300,7 +320,7 @@ var FFGameState = {
   },
   startQuestion: function () {
     AudioManager.playSound("bloop_sfx", this);
-
+	this.spriteScreen = false;
     this.setOptionsClickable(false);
     this.questionBoxGroup.visible = true;
     this.add
@@ -397,7 +417,7 @@ var FFGameState = {
   },
   closeResult: function () {
     AudioManager.playSound("bloop_sfx", this);
-
+	this.spriteScreen = true;
     this.resultsBoxGroup.visible = false;
     this.setOptionsClickable(true);
 
@@ -418,5 +438,49 @@ var FFGameState = {
       // this.finishedButton.anchor.setTo(0.5, 0.5);
       // this.add.tween(this.finishedButton.scale).to({ x: 1.1, y: 1.1 }, 600, "Linear", true, 0, -1, true);
     }
+  },
+  highlightSpriteOption: function() {
+  	for (let i = 0; i < this.optionSpriteOutlines.length; i++) {
+		if (i === this.focusSpriteIndex) {
+			this.optionSpriteOutlines[i].tint= 0xff0000;	
+		}
+		else {
+			this.optionSpriteOutlines[i].tint= 0xFFFFFFFF;
+		}
+	}
+  },
+  highlightQuestionOption: function() {
+  	for (let i = 0; i < this.questionOptions.length; i++) {
+		if (i === this.focusQIndex) {
+			this.questionOptions[i].tint = 0xff0000;
+		}
+		else {
+			this.questionOptions[i].tint = 0xFFFFFFFF;
+		}
+	}
+  },
+  activateButton: function() {
+  	if (this.spriteScreen) {
+		console.log("1");
+		this.optionSprites[this.focusSpriteIndex].clickable.cb.call(this);
+	}
+	else if (this.questionBoxGroup.visible) {
+		console.log("2");
+		this.questionOptions[this.focusQIndex].cb.call(this);
+	}
+	else {
+		console.log("3");
+		this.resultsNextButton.cb.call(this);
+	}
+  },
+  cycleFocus: function() {
+  	if (this.spriteScreen){ // adding boolean spriteScreen to indicate we are cycling through sprites
+		this.focusSpriteIndex = (this.focusSpriteIndex + 1) % this.optionSpriteOutlines.length;	
+		this.highlightSpriteOption();
+	}
+	else { // if not on spriteScreen we are on Question screen so we should cycle through fix it or its okay buttons 
+		this.focusQIndex = (this.focusQIndex + 1) % this.questionOptions.length;
+		this.highlightQuestionOption();
+	}
   },
 };
