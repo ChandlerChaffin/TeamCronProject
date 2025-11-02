@@ -13,6 +13,7 @@ var FFGameState = {
     this.currentQuestionId = 0;
     this.optionSprites = [];
 	this.optionSpriteOutlines = [];
+	this.clickableSprites = [];
 	this.questionOptions = [];
 	this.spriteScreen = true;
 	this.focusSpriteIndex = 0;
@@ -57,9 +58,10 @@ var FFGameState = {
       clickableSprite.events.onInputDown.add(onClick, this);
       clickableSprite.optionIndex = i;
       clickableSprite.inputEnabled = true;
-      clickableSprite.input.useHandCursor = true;
+      //clickableSprite.input.useHandCursor = true;
 	  clickableSprite.cb = onClick;
       this.middleLayer.add(clickableSprite);
+	  this.clickableSprites.push(clickableSprite);
 
       var optionSprite = {
         enabled: true,
@@ -325,7 +327,7 @@ var FFGameState = {
     this.questionBoxGroup.visible = true;
     this.add
       .tween(this.questionBoxGroup.scale)
-      .from({ x: 0.5, y: 0.5 }, 500, "Elastic", true);
+      .from({ x: 1.4, y: 1.4 }, 500, "Elastic", true);
 
     var option = FFGame.options[this.currentQuestionId];
     var data = FFGameData.options[option.id];
@@ -452,7 +454,7 @@ var FFGameState = {
   highlightQuestionOption: function() {
   	for (let i = 0; i < this.questionOptions.length; i++) {
 		if (i === this.focusQIndex) {
-			this.questionOptions[i].tint = 0xff0000;
+			this.questionOptions[i].tint = 0xA149CA;
 		}
 		else {
 			this.questionOptions[i].tint = 0xFFFFFFFF;
@@ -461,21 +463,23 @@ var FFGameState = {
   },
   activateButton: function() {
   	if (this.spriteScreen) {
-		console.log("1");
-		this.optionSprites[this.focusSpriteIndex].clickable.cb.call(this);
+		var idx = this.focusSpriteIndex;
+		var sprite = this.clickableSprites[idx];
+		if (sprite) {
+			sprite.events.onInputDown.dispatch({optionIndex: sprite.optionIndex});
+			sprite.cb.call(this,{optionIndex: sprite.optionIndex});
+		}
 	}
 	else if (this.questionBoxGroup.visible) {
-		console.log("2");
 		this.questionOptions[this.focusQIndex].cb.call(this);
 	}
 	else {
-		console.log("3");
 		this.resultsNextButton.cb.call(this);
 	}
   },
   cycleFocus: function() {
   	if (this.spriteScreen){ // adding boolean spriteScreen to indicate we are cycling through sprites
-		this.focusSpriteIndex = (this.focusSpriteIndex + 1) % this.optionSpriteOutlines.length;	
+		this.focusSpriteIndex = (this.focusSpriteIndex + 1) % this.clickableSprites.length;	
 		this.highlightSpriteOption();
 	}
 	else { // if not on spriteScreen we are on Question screen so we should cycle through fix it or its okay buttons 

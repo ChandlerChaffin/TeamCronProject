@@ -4,7 +4,6 @@ var FFScoreState = {
   preload: function () {},
   create: function () {
     this.subSceneIndex = 0;
-
     // Background
     this.backgroundSprite = this.add.sprite(0, 0, "background_1");
 
@@ -96,6 +95,16 @@ var FFScoreState = {
 
     // Audio
     AudioManager.playSong("results_music", this);
+	//Tab Enter
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	//focus index and button array
+	this.focusIndex = 0;
+	this.buttons = [this.homeButton, this.replayButton];
+	this.updateButtonHighlight();
+	//key push actions
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -112,4 +121,27 @@ var FFScoreState = {
       this.state.start("FFGameState");
     },
   },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	if (this.focusIndex === 0) {
+		this.homeButtonActions.onClick.call(this);
+	}
+	else {
+		this.replayButtonActions.onClick.call(this);
+	}
+  },
+  updateButtonHighlight: function() {
+		for (var i = 0; i < this.buttons.length; i++) {
+			var btn = this.buttons[i];
+			if (i === this.focusIndex) {
+				btn.tint = 0xA149CA;
+			}
+			else {
+				btn.tint = 0xFFFFFF;
+			}
+		}
+	},
 };
