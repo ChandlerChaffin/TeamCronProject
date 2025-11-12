@@ -137,7 +137,7 @@ var FFScoreState = {
 		for (var i = 0; i < this.buttons.length; i++) {
 			var btn = this.buttons[i];
 			if (i === this.focusIndex) {
-				btn.tint = 0xA149CA;
+				btn.tint = 0x8D35B6;
 			}
 			else {
 				btn.tint = 0xFFFFFF;

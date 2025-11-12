@@ -152,6 +152,26 @@ var FFGameState = {
     this.questionBoxSprite.anchor.setTo(0.5, 0.5);
     this.questionBoxGroup.add(this.questionBoxSprite);
 
+    this.fixItButtonBack = this.add.button(
+      0.17 * WIDTH,
+      -0.03 * HEIGHT,
+      "ff_button_fix_it",
+      onClick = function () {
+        this.startResult(true);
+      },
+      this,
+      0,
+      0,
+      1
+    );
+    this.fixItButtonBack.anchor.setTo(0.5, 0.5);
+	this.fixItButtonBack.cb = onClick;
+	this.fixItButtonBack.scale.setTo(1.1);
+    this.questionBoxGroup.add(this.fixItButtonBack);
+    this.add
+      .tween(this.fixItButtonBack.scale)
+      .to({ x: 0.9, y: 0.9 }, 600, "Linear", true, 0, -1, true);
+
     this.fixItButton = this.add.button(
       0.17 * WIDTH,
       -0.03 * HEIGHT,
@@ -169,6 +189,26 @@ var FFGameState = {
     this.questionBoxGroup.add(this.fixItButton);
     this.add
       .tween(this.fixItButton.scale)
+      .to({ x: 0.9, y: 0.9 }, 600, "Linear", true, 0, -1, true);
+
+    this.itsOkButtonBack = this.add.button(
+      0.17 * WIDTH,
+      0.12 * HEIGHT,
+      "ff_button_its_ok",
+      onClick = function () {
+        this.startResult(false);
+      },
+      this,
+      0,
+      0,
+      1
+    );
+    this.itsOkButtonBack.anchor.setTo(0.5, 0.5);
+	this.itsOkButtonBack.cb = onClick;
+	this.itsOkButtonBack.scale.setTo(1.1);
+    this.questionBoxGroup.add(this.itsOkButtonBack);
+    this.add
+      .tween(this.itsOkButtonBack.scale)
       .to({ x: 0.9, y: 0.9 }, 600, "Linear", true, 0, -1, true);
 
     this.itsOkButton = this.add.button(
@@ -196,8 +236,8 @@ var FFGameState = {
       ""
     );
 	//Adding question answer buttons to array.
-	this.questionOptions.push(this.itsOkButton);
-	this.questionOptions.push(this.fixItButton);
+	this.questionOptions.push(this.itsOkButtonBack);
+	this.questionOptions.push(this.fixItButtonBack);
 
     this.questionImageSprite.anchor.setTo(0.5, 0.5);
     this.questionBoxGroup.add(this.questionImageSprite);
@@ -444,7 +484,7 @@ var FFGameState = {
   highlightSpriteOption: function() {
   	for (let i = 0; i < this.optionSpriteOutlines.length; i++) {
 		if (i === this.focusSpriteIndex) {
-			this.optionSpriteOutlines[i].tint= 0xff0000;	
+			this.optionSpriteOutlines[i].tint= 0xA1177C;	
 		}
 		else {
 			this.optionSpriteOutlines[i].tint= 0xFFFFFFFF;
