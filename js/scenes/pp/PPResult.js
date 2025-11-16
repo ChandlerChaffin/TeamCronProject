@@ -423,7 +423,7 @@ var PPResultState = {
     this.pauseButton.scale.setTo(0.75);
 	this.pauseButton.inputEnabled = true;
     // enter to progress
-    this.keyEnter = this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
 	// P to pause
 	this.keyP = this.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(onPause,this);

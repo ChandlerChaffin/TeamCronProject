@@ -508,6 +508,8 @@ var FFGameState = {
 		if (sprite) {
 			sprite.events.onInputDown.dispatch({optionIndex: sprite.optionIndex});
 			sprite.cb.call(this,{optionIndex: sprite.optionIndex});
+			this.clickableSprites.splice(idx,1); // removing sprite from arrays so we can't click the same one more than once
+			this.optionSpriteOutlines.splice(idx,1); // see comment above 
 		}
 	}
 	else if (this.questionBoxGroup.visible) {
