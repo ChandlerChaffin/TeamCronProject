@@ -115,6 +115,13 @@ var PPLevelSelectState = {
     createMuteButton(this);
 	// Narrator Button 
 	createNarratorButton(this);
+	//Level Selection Narration
+	if (narrator) {
+		if (this.currentsound && this.currentsound.isPlaying) {
+			this.currentsound.stop();
+		}
+		this.currentsound = AudioManager.playSound("ChooseLevelPP",this);
+	}
 
     // Start Animation
     this.animationSpeed = 500;
@@ -175,6 +182,22 @@ var PPLevelSelectState = {
 		else {
 			btn.tint = 0xffffff;
 		}
+	}
+	if (narrator) {
+		if (this.currentsound && this.currentsound.isPlaying) {
+			this.currentsound.stop();
+		}
+		switch (this.focusIndex) {
+			case 0:
+				this.currentsound = AudioManager.playSound("PPLevel1",this);
+				break;
+			case 1:
+				this.currentsound = AudioManager.playSound("PPLevel2",this);
+				break;
+			case 2: 
+				this.currentsound = AudioManager.playSound("PPLevel3",this);
+				break;
+		}	
 	}
   },
 };

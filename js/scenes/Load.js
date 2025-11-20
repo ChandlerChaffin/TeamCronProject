@@ -91,7 +91,7 @@ var LoadState = {
       58
     );
 	//Narrator button
-	this.load.spritesheet("button_narrator", "assets/button/Narrator_button4.png",127,130);
+	this.load.spritesheet("button_narrator", "assets/button/Narrator_Button_1.png",110,125);
 
     // Audio
     this.load.audio("title_music", "audio/JoyInTheWorldNew.mp3");
@@ -114,6 +114,22 @@ var LoadState = {
     this.load.audio("Choose","audio/ChooseGame.mp3");
     this.load.audio("Title_PP","audio/PPTitle.mp3");
     this.load.audio("Title_FF","audio/FFTitle.mp3");
+	
+	//Misc PP audio
+	this.load.audio("ChooseLevelPP","audio/ChooseLevel.mp3");
+	this.load.audio("Correct_PP","audio/Correct_PP.mp3");
+	this.load.audio("PPFinal_0","audio/PPFinal_0.mp3");
+	this.load.audio("PPFinal_1","audio/PPFinal_1.mp3");
+	this.load.audio("PPFinal_2","audio/PPFinal_2.mp3");
+	this.load.audio("PPFinal_3","audio/PPFinal_3.mp3");
+	this.load.audio("PPFinal_4","audio/PPFinal_4.mp3");
+	this.load.audio("PPFinal_5","audio/PPFinal_5.mp3");
+	this.load.audio("PPRain_Scene","audio/RainScene.mp3");
+	this.load.audio("Oops","audio/Oops.mp3");
+	this.load.audio("PPLevel1","audio/PPLevel1.mp3");
+	this.load.audio("PPLevel2","audio/PPLevel2.mp3");
+	this.load.audio("PPLevel3","audio/PPLevel3.mp3");
+	
     
      //PP Narration 
     this.load.audio("PPintro_1","audio/PPIntro1.mp3"); // done
@@ -121,61 +137,103 @@ var LoadState = {
     this.load.audio("PPintro_3","audio/PPIntro3.mp3"); // done
 
     //PP Level 1 narration
-    this.load.audio("PPquestion1_1","audio/PPQuestion1_1.mp3");
-    this.load.audio("PPquestion1_1_a","audio/PPQuestion1_1_a.mp3");
-    this.load.audio("PPquestion1_1_b","audio/PPQuestion1_1_b.mp3");
-    this.load.audio("PPquestion1_1_c","audio/PPQuestion1_1_c.mp3");
-    this.load.audio("PPquestion1_2","audio/PPQuestion1_2.mp3");
-    this.load.audio("PPquestion1_2_a","audio/PPQuestion1_2_a.mp3");
-    this.load.audio("PPquestion1_2_b","audio/PPQuestion1_2_b.mp3");
-    this.load.audio("PPquestion1_3","audio/PPQuestion1_3.mp3");
-    this.load.audio("PPquestion1_3_a","audio/PPQuestion1_3_a.mp3");
-    this.load.audio("PPquestion1_3_b","audio/PPQuestion1_3_b.mp3");
-    this.load.audio("PPquestion1_3_c","audio/PPQuestion1_3_c.mp3");
-    this.load.audio("PPquestion1_4","audio/PPQuestion1_4.mp3");
-    this.load.audio("PPquestion1_4_a","audio/PPQuestion1_4_a.mp3");
-    this.load.audio("PPquestion1_4_b","audio/PPQuestion1_4_b.mp3");
-    this.load.audio("PPquestion1_5","audio/PPQuestion1_5.mp3");
-    this.load.audio("PPquestion1_5_a","audio/PPQuestion1_5_a.mp3");
-    this.load.audio("PPquestion1_5_b","audio/PPQuestion1_5_b.mp3");
+    this.load.audio("PPquestion1_1","audio/Level1/PPQuestion1_1.mp3");
+    this.load.audio("PPquestion1_1_a","audio/Level1/PPQuestion1_1_a.mp3");
+    this.load.audio("PPquestion1_1_b","audio/Level1/PPQuestion1_1_b.mp3");
+    this.load.audio("PPquestion1_1_c","audio/Level1/PPQuestion1_1_c.mp3");
+    this.load.audio("PPquestion1_2","audio/Level1/PPQuestion1_2.mp3");
+    this.load.audio("PPquestion1_2_a","audio/Level1/PPQuestion1_2_a.mp3");
+    this.load.audio("PPquestion1_2_b","audio/Level1/PPQuestion1_2_b.mp3");
+    this.load.audio("PPquestion1_3","audio/Level1/PPQuestion1_3.mp3");
+    this.load.audio("PPquestion1_3_a","audio/Level1/PPQuestion1_3_a.mp3");
+    this.load.audio("PPquestion1_3_b","audio/Level1/PPQuestion1_3_b.mp3");
+    this.load.audio("PPquestion1_3_c","audio/Level1/PPQuestion1_3_c.mp3");
+    this.load.audio("PPquestion1_4","audio/Level1/PPQuestion1_4.mp3");
+    this.load.audio("PPquestion1_4_a","audio/Level1/PPQuestion1_4_a.mp3");
+    this.load.audio("PPquestion1_4_b","audio/Level1/PPQuestion1_4_b.mp3");
+    this.load.audio("PPquestion1_5","audio/Level1/PPQuestion1_5.mp3");
+    this.load.audio("PPquestion1_5_a","audio/Level1/PPQuestion1_5_a.mp3");
+    this.load.audio("PPquestion1_5_b","audio/Level1/PPQuestion1_5_b.mp3");
+	//Level 1 result narration
+	this.load.audio("PPresult1_1a","audio/Level1/PPResult1_1a.mp3");
+	this.load.audio("PPresult1_1b","audio/Level1/PPResult1_1b.mp3");
+	this.load.audio("PPresult1_1c","audio/Level1/PPResult1_1c.mp3");
+	this.load.audio("PPresult1_2a","audio/Level1/PPResult1_2a.mp3");
+	this.load.audio("PPresult1_2b","audio/Level1/PPResult1_2b.mp3");
+	this.load.audio("PPresult1_3a","audio/Level1/PPResult1_3a.mp3");
+	this.load.audio("PPresult1_3b","audio/Level1/PPResult1_3b.mp3");
+	this.load.audio("PPresult1_3c","audio/Level1/PPResult1_3c.mp3");
+	this.load.audio("PPresult1_4a","audio/Level1/PPResult1_4a.mp3");
+	this.load.audio("PPresult1_4b","audio/Level1/PPResult1_4b.mp3");
+	this.load.audio("PPresult1_5a","audio/Level1/PPResult1_5a.mp3");
+	this.load.audio("PPresult1_5b","audio/Level1/PPResult1_5b.mp3");
+
 
     //PP Level 2 narration
-    this.load.audio("PPquestion2_1","audio/PPQuestion2_1.mp3");
-    this.load.audio("PPquestion2_1_a","audio/PPQuestion2_1_a.mp3");
-    this.load.audio("PPquestion2_1_b","audio/PPQuestion2_1_b.mp3");
-    this.load.audio("PPquestion2_1_c","audio/PPQuestion2_1_c.mp3");
-    this.load.audio("PPquestion2_2","audio/PPQuestion2_2.mp3");
-    this.load.audio("PPquestion2_2_a","audio/PPQuestion2_2_a.mp3");
-    this.load.audio("PPquestion2_2_b","audio/PPQuestion2_2_b.mp3");
-    this.load.audio("PPquestion2_3","audio/PPQuestion2_3.mp3");
-    this.load.audio("PPquestion2_3_a","audio/PPQuestion2_3_a.mp3");
-    this.load.audio("PPquestion2_3_b","audio/PPQuestion2_3_b.mp3");
-    this.load.audio("PPquestion2_4","audio/PPQuestion2_4.mp3");
-    this.load.audio("PPquestion2_4_a","audio/PPQuestion2_4_a.mp3");
-    this.load.audio("PPquestion2_4_b","audio/PPQuestion2_4_b.mp3");
-    this.load.audio("PPquestion2_4_c","audio/PPQuestion2_4_c.mp3");
-    this.load.audio("PPquestion2_5","audio/PPQuestion2_5.mp3");
-    this.load.audio("PPquestion2_5_a","audio/PPQuestion2_5_a.mp3");
-    this.load.audio("PPquestion2_5_b","audio/PPQuestion2_5_b.mp3");
-    this.load.audio("PPquestion2_5_c","audio/PPQuestion2_5_c.mp3");
+    this.load.audio("PPquestion2_1","audio/Level2/PPQuestion2_1.mp3");
+    this.load.audio("PPquestion2_1_a","audio/Level2/PPQuestion2_1_a.mp3");
+    this.load.audio("PPquestion2_1_b","audio/Level2/PPQuestion2_1_b.mp3");
+    this.load.audio("PPquestion2_1_c","audio/Level2/PPQuestion2_1_c.mp3");
+    this.load.audio("PPquestion2_2","audio/Level2/PPQuestion2_2.mp3");
+    this.load.audio("PPquestion2_2_a","audio/Level2/PPQuestion2_2_a.mp3");
+    this.load.audio("PPquestion2_2_b","audio/Level2/PPQuestion2_2_b.mp3");
+    this.load.audio("PPquestion2_3","audio/Level2/PPQuestion2_3.mp3");
+    this.load.audio("PPquestion2_3_a","audio/Level2/PPQuestion2_3_a.mp3");
+    this.load.audio("PPquestion2_3_b","audio/Level2/PPQuestion2_3_b.mp3");
+    this.load.audio("PPquestion2_4","audio/Level2/PPQuestion2_4.mp3");
+    this.load.audio("PPquestion2_4_a","audio/Level2/PPQuestion2_4_a.mp3");
+    this.load.audio("PPquestion2_4_b","audio/Level2/PPQuestion2_4_b.mp3");
+    this.load.audio("PPquestion2_4_c","audio/Level2/PPQuestion2_4_c.mp3");
+    this.load.audio("PPquestion2_5","audio/Level2/PPQuestion2_5.mp3");
+    this.load.audio("PPquestion2_5_a","audio/Level2/PPQuestion2_5_a.mp3");
+    this.load.audio("PPquestion2_5_b","audio/Level2/PPQuestion2_5_b.mp3");
+    this.load.audio("PPquestion2_5_c","audio/Level2/PPQuestion2_5_c.mp3");
+	//PP Level 2 result narration
+	this.load.audio("PPresult2_1a","audio/Level2/PPResult2_1a.mp3");
+	this.load.audio("PPresult2_1b","audio/Level2/PPResult2_1b.mp3");
+	this.load.audio("PPresult2_1c","audio/Level2/PPResult2_1c.mp3");
+	this.load.audio("PPresult2_2a","audio/Level2/PPResult2_2a.mp3");
+	this.load.audio("PPresult2_2b","audio/Level2/PPResult2_2b.mp3");
+	this.load.audio("PPresult2_3a","audio/Level2/PPResult2_3a.mp3");
+	this.load.audio("PPresult2_3b","audio/Level2/PPResult2_3b.mp3");
+	this.load.audio("PPresult2_4a","audio/Level2/PPResult2_4a.mp3");
+	this.load.audio("PPresult2_4b","audio/Level2/PPResult2_4b.mp3");
+	this.load.audio("PPresult2_4c","audio/Level2/PPResult2_4c.mp3");
+	this.load.audio("PPresult2_5a","audio/Level2/PPResult2_5a.mp3");
+	this.load.audio("PPresult2_5b","audio/Level2/PPResult2_5b.mp3");
+	this.load.audio("PPresult2_5c","audio/Level2/PPResult2_5c.mp3");
 
     //PP level 3 narration 
-    this.load.audio("PPquestion3_1","audio/PPQuestion3_1.mp3");
-    this.load.audio("PPquestion3_1_a","audio/PPQuestion3_1_a.mp3");
-    this.load.audio("PPquestion3_1_b","audio/PPQuestion3_1_b.mp3");
-    this.load.audio("PPquestion3_2","audio/PPQuestion3_2.mp3");
-    this.load.audio("PPquestion3_2_a","audio/PPQuestion3_2_a.mp3");
-    this.load.audio("PPquestion3_2_b","audio/PPQuestion3_2_b.mp3");
-    this.load.audio("PPquestion3_3","audio/PPQuestion3_3.mp3");
-    this.load.audio("PPquestion3_3_a","audio/PPQuestion3_3_a.mp3");
-    this.load.audio("PPquestion3_3_b","audio/PPQuestion3_3_b.mp3");
-    this.load.audio("PPquestion3_4","audio/PPQuestion3_4.mp3");
-    this.load.audio("PPquestion3_4_a","audio/PPQuestion3_4_a.mp3");
-    this.load.audio("PPquestion3_4_b","audio/PPQuestion3_4_b.mp3");
-    this.load.audio("PPquestion3_5","audio/PPQuestion3_5.mp3");
-    this.load.audio("PPquestion3_5_a","audio/PPQuestion3_5_a.mp3");
-    this.load.audio("PPquestion3_5_b","audio/PPQuestion3_5_b.mp3");
-    this.load.audio("PPquestion3_5_c","audio/PPQuestion3_5_c.mp3");
+    this.load.audio("PPquestion3_1","audio/Level3/PPQuestion3_1.mp3");
+    this.load.audio("PPquestion3_1_a","audio/Level3/PPQuestion3_1_a.mp3");
+    this.load.audio("PPquestion3_1_b","audio/Level3/PPQuestion3_1_b.mp3");
+    this.load.audio("PPquestion3_2","audio/Level3/PPQuestion3_2.mp3");
+    this.load.audio("PPquestion3_2_a","audio/Level3/PPQuestion3_2_a.mp3");
+    this.load.audio("PPquestion3_2_b","audio/Level3/PPQuestion3_2_b.mp3");
+    this.load.audio("PPquestion3_3","audio/Level3/PPQuestion3_3.mp3");
+    this.load.audio("PPquestion3_3_a","audio/Level3/PPQuestion3_3_a.mp3");
+    this.load.audio("PPquestion3_3_b","audio/Level3/PPQuestion3_3_b.mp3");
+    this.load.audio("PPquestion3_4","audio/Level3/PPQuestion3_4.mp3");
+    this.load.audio("PPquestion3_4_a","audio/Level3/PPQuestion3_4_a.mp3");
+    this.load.audio("PPquestion3_4_b","audio/Level3/PPQuestion3_4_b.mp3");
+    this.load.audio("PPquestion3_5","audio/Level3/PPQuestion3_5.mp3");
+    this.load.audio("PPquestion3_5_a","audio/Level3/PPQuestion3_5_a.mp3");
+    this.load.audio("PPquestion3_5_b","audio/Level3/PPQuestion3_5_b.mp3");
+    this.load.audio("PPquestion3_5_c","audio/Level3/PPQuestion3_5_c.mp3");
+	// PP level 3 result narration
+	this.load.audio("PPresult3_1a","audio/Level3/PPResult3_1a.mp3");
+	this.load.audio("PPresult3_1b","audio/Level3/PPResult3_1b.mp3");
+	this.load.audio("PPresult3_2a","audio/Level3/PPResult3_2a.mp3");
+	this.load.audio("PPresult3_2b","audio/Level3/PPResult3_2b.mp3");
+	this.load.audio("PPresult3_3a","audio/Level3/PPResult3_3a.mp3");
+	this.load.audio("PPresult3_3b","audio/Level3/PPResult3_3b.mp3");
+	this.load.audio("PPresult3_4a","audio/Level3/PPResult3_4a.mp3");
+	this.load.audio("PPresult3_4b","audio/Level3/PPResult3_4b.mp3");
+	this.load.audio("PPresult3_5a","audio/Level3/PPResult3_5a.mp3");
+	this.load.audio("PPresult3_5b","audio/Level3/PPResult3_5b.mp3");
+	this.load.audio("PPresult3_5c","audio/Level3/PPResult3_5c.mp3");
+
+	
 
 
 

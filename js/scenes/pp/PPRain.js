@@ -122,6 +122,13 @@ var PPRainState = {
       },
       this
     );
+	//Play narration
+	if (narrator) {
+		if (this.currentsound && this.currentsound.isPlaying) {
+			this.currentsound.stop();
+		}
+		this.currentsound = AudioManager.playSound("PPRain_Scene",this);
+	}
 
     // Play sound
     AudioManager.playSound("rain_sfx", this);
@@ -134,6 +141,11 @@ var PPRainState = {
   update: function () {},
   nextButtonActions: {
     onClick: function () {
+	  if (narrator) {
+		if (this.currentsound && this.currentsound.isPlaying) {
+			this.currentsound.stop();
+		}
+	  }
       AudioManager.playSound("bloop_sfx", this);
       this.state.start("PPResultState");
     },

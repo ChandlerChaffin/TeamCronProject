@@ -397,12 +397,32 @@ var PPResultState = {
     // SFX
     if (correct) {
       AudioManager.playSound("correct_sfx", this);
-    } else {
-      AudioManager.playSound("wrong_sfx", this);
+	  if (narrator) {
+	  	this.currentsound = AudioManager.playSound("Correct_PP",this);
+		this.nextDelay = 5000;
+	  }
     }
+	else {
+      AudioManager.playSound("wrong_sfx", this);
+	  if (narrator) {
+		this.currentsound = AudioManager.playSound("Oops",this);
+		this.nextDelay = 1000;
+	  }
+    }
+	var current_key = chosenOption.audio_result;
+	this.time.events.add(
+		this.nextDelay,
+		function () {
+			if (narrator) {
+				this.currentsound = AudioManager.playSound(current_key,this);
+			}
+		},
+		this
+	);
 
     // Mute button
-    createMuteButton(this);
+    createMuteButton(this);	
+
 
     // Pause Button
     var onPause = function () {
@@ -433,6 +453,9 @@ var PPResultState = {
   nextButtonActions: {
     onClick: function () {
       AudioManager.playSound("bloop_sfx", this);
+	  if (this.currentsound && this.currentsound.isPlaying) {
+		this.currentsound.stop();
+	  }
       if (PPGame.questionsCompleted < 4) {
         PPGame.questionId = PPGame.questionOrder[++PPGame.questionsCompleted];
         this.state.start("PPQuestionState");

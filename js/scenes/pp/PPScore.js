@@ -80,7 +80,30 @@ var PPScoreState = {
       .yoyo(true, 0)
       .loop(true);
 
-	//Enter and tab key
+	//Narration final score
+	if (narrator) {
+		switch (PPGame.score) {
+			case 0:
+				AudioManager.playSound("PPFinal_0",this);
+				break;
+			case 1:
+				AudioManager.playSound("PPFinal_1",this);
+				break;
+			case 2:
+				AudioManager.playSound("PPFinal_2",this);
+				break;
+			case 3:
+				AudioManager.playSound("PPFinal_3",this);
+				break;
+			case 4:
+				AudioManager.playSound("PPFinal_4",this);
+				break;
+			case 5:
+				AudioManager.playSound("PPFinal_5",this);
+				break;
+		}
+
+	}
 
     // Mute button
     createMuteButton(this);
