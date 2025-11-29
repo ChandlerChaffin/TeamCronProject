@@ -191,7 +191,7 @@ var ChooseGameState = {
   	for (var i = 0; i <this.buttons.length; i++) {
 		var btn = this.buttonBacks[i];
 		if (i === this.focusIndex) {
-			btn.tint = 0xA44ABF; 
+			btn.tint = 0x000000 //0xA44ABF; 
 		}
 		else {
 			btn.tint = 0xffffff;

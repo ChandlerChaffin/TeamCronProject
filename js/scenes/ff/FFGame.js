@@ -40,7 +40,7 @@ var FFGameState = {
       outlineSprite.scale.setTo(spriteData.scale.x, spriteData.scale.y);
       this.add
         .tween(outlineSprite)
-        .to({ alpha: 0.1 }, 800, "Linear", true, 0, -1, true);
+        .to({ alpha: 0.5 }, 800, "Linear", true, 0, -1, true);
       this.topLayer.add(outlineSprite);
 	  this.optionSpriteOutlines.push(outlineSprite);
 
@@ -60,6 +60,7 @@ var FFGameState = {
       clickableSprite.inputEnabled = true;
       //clickableSprite.input.useHandCursor = true;
 	  clickableSprite.cb = onClick;
+	  clickableSprite.nameaudio = spriteData.n_audio;
       this.middleLayer.add(clickableSprite);
 	  this.clickableSprites.push(clickableSprite);
 
@@ -372,6 +373,9 @@ var FFGameState = {
     var option = FFGame.options[this.currentQuestionId];
     var data = FFGameData.options[option.id];
     var childData = option.wrong ? data.wrong : data.correct;
+	if (narrator) {
+		this.currentsound = AudioManager.playSound(data.q_audio,this);
+	}
 
     this.questionHeaderText.setText(childData.questionTitle);
     this.questionImageSprite.loadTexture(childData.questionImage);
@@ -384,7 +388,7 @@ var FFGameState = {
     var option = FFGame.options[this.currentQuestionId];
     var data = FFGameData.options[option.id];
 
-    var correct = fixIt == option.wrong;
+    var correct = fixIt == option.wrong; //if you say fix it (true) when option.wrong is true you are correct. option.wrong == true means currently not the valid state. 
     var dataChild = correct ? data.correct : data.wrong;
     var dataChildText = option.wrong
       ? correct
@@ -397,6 +401,9 @@ var FFGameState = {
     this.resultsBoxSprite.loadTexture(
       correct ? "ff_correct_box" : "ff_oops_box"
     );
+	if(narrator) {
+		this.currentsound = AudioManager.playSound(dataChild.r_audio, this);
+	}
     this.resultsBoxGroup.visible = true;
     this.resultsNextButton.visible = false;
     this.add
@@ -416,6 +423,7 @@ var FFGameState = {
     this.resultsUpperText.setText(dataChildText.resultUpperText);
     this.resultsLowerText.setText(dataChildText.resultLowerText);
     this.resultsImageSprite.loadTexture(dataChild.resultImage);
+	
 
     var sprite = this.optionSprites[this.currentQuestionId];
     sprite.enabled = false;
@@ -484,7 +492,14 @@ var FFGameState = {
   highlightSpriteOption: function() {
   	for (let i = 0; i < this.optionSpriteOutlines.length; i++) {
 		if (i === this.focusSpriteIndex) {
-			this.optionSpriteOutlines[i].tint= 0xA1177C;	
+			this.optionSpriteOutlines[i].tint=  0x000000; //0x66ff00;	
+			var sprite = this.clickableSprites[i];
+			if (narrator) {
+				if (this.currentsound && this.currentsound.isPlaying) {
+					this.currentsound.stop();
+				}
+				this.currentsound = AudioManager.playSound(sprite.nameaudio,this);
+			}
 		}
 		else {
 			this.optionSpriteOutlines[i].tint= 0xFFFFFFFF;
@@ -494,7 +509,14 @@ var FFGameState = {
   highlightQuestionOption: function() {
   	for (let i = 0; i < this.questionOptions.length; i++) {
 		if (i === this.focusQIndex) {
-			this.questionOptions[i].tint = 0xA149CA;
+			//this.questionOptions[i].tint = 0x66ff00;
+			if (narrator) {
+				if(this.currentsound && this.currentsound.isPlaying) {
+					this.currentsound.stop();
+				}
+				this.currentsound = AudioManager.playSound((i == 1) ? "FF_FixIt":"FF_ItsOk",this);
+			}
+			this.questionOptions[i].tint = 0x000000;
 		}
 		else {
 			this.questionOptions[i].tint = 0xFFFFFFFF;

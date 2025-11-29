@@ -91,7 +91,7 @@ var LoadState = {
       58
     );
 	//Narrator button
-	this.load.spritesheet("button_narrator", "assets/button/Narrator_Button_1.png",110,125);
+	this.load.spritesheet("button_narrator", "assets/button/Narrator_Button_1.png",115,115);
 
     // Audio
     this.load.audio("title_music", "audio/JoyInTheWorldNew.mp3");
@@ -233,7 +233,28 @@ var LoadState = {
 	this.load.audio("PPresult3_5b","audio/Level3/PPResult3_5b.mp3");
 	this.load.audio("PPresult3_5c","audio/Level3/PPResult3_5c.mp3");
 
+	// Find it or Fix it intro + misc
+	this.load.audio("FFintro1","audio/FF/FFIntro_1.mp3");
+	this.load.audio("FFintro2","audio/FF/FFIntro_2.mp3");
+	this.load.audio("FFintro3","audio/FF/FFIntro_3.mp3");
+	this.load.audio("FFintro4","audio/FF/FFIntro_4.mp3");
+	this.load.audio("FF_FixIt","audio/FF/FF_Fixit.mp3");
+	this.load.audio("FF_ItsOk","audio/FF/FF_ItsOk.mp3");
+	// FF Option Sprites narration
 	
+	this.load.audio("FF_dirt","audio/FF/FF_dirt.mp3");
+	this.load.audio("FF_downspout","audio/FF/FF_downspout.mp3");
+	this.load.audio("FF_oil","audio/FF/FF_oil.mp3");
+	this.load.audio("FF_trash","audio/FF/FF_trash.mp3");
+	this.load.audio("FF_trashbin","audio/FF/FF_trashbin.mp3");
+	this.load.audio("FF_washingcar","audio/FF/FF_washingcar.mp3");
+	this.load.audio("FF_washingdog","audio/FF/FF_washingdog.mp3");
+	this.load.audio("FF_dogwaste","audio/FF/FF_dogwaste.mp3");
+	//this.load.audio("FF_sprinkler","audio/FF/FF_sprinkler.mp3");
+
+	//FF results narration
+
+
 
 
 
