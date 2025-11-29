@@ -253,11 +253,53 @@ var LoadState = {
 	//this.load.audio("FF_sprinkler","audio/FF/FF_sprinkler.mp3");
 
 	//FF results narration
+	this.load.audio("FF_sprinklerQC","audio/FF/FF_sprinklerQC.mp3");
+	this.load.audio("FF_sprinklerQF","audio/FF/FF_sprinklerQF.mp3");
+	this.load.audio("FF_sprinklerCC","audio/FF/FF_sprinklerCC.mp3");
+	this.load.audio("FF_sprinklerCF","audio/FF/FF_sprinklerCF.mp3");
+	this.load.audio("FF_sprinklerFC","audio/FF/FF_sprinklerFC.mp3");
+	this.load.audio("FF_sprinklerFF","audio/FF/FF_sprinklerFF.mp3");
+
+	this.load.audio("FF_oilFF","audio/FF/FF_oilFF.mp3");
+	this.load.audio("FF_oilFC","audio/FF/FF_oilFC.mp3");
+	this.load.audio("FF_oilQF","audio/FF/FF_oilQF.mp3");
+
+	this.load.audio("FF_dirtFF","audio/FF/FF_dirtFF.mp3");
+	this.load.audio("FF_dirtFC","audio/FF/FF_dirtFC.mp3");
+	this.load.audio("FF_dirtQF","audio/FF/FF_dirtQF.mp3");
 
 
+	this.load.audio("FF_washingcarQC","audio/FF/FF_washingcarQC.mp3");
+	this.load.audio("FF_washingcarQF","audio/FF/FF_washingcarQF.mp3");
+	this.load.audio("FF_washingcarBF","audio/FF/FF_washingcarBF.mp3");
+	this.load.audio("FF_washingcarFC","audio/FF/FF_washingcarFC.mp3");
+	this.load.audio("FF_washingcarCC","audio/FF/FF_washingcarCC.mp3");
 
+	this.load.audio("FF_washingdogBF","audio/FF/FF_washingdogBF.mp3");
+	this.load.audio("FF_washingdogQF","audio/FF/FF_washingdogQF.mp3");
+	this.load.audio("FF_washingdogQC","audio/FF/FF_washingdogQC.mp3");
+	this.load.audio("FF_washingdogFC","audio/FF/FF_washingdogFC.mp3");
+	this.load.audio("FF_washingdogCC","audio/FF/FF_washingdogCC.mp3");
 
+	this.load.audio("FF_trashFF","audio/FF/FF_trashFF.mp3");
+	this.load.audio("FF_trashFC","audio/FF/FF_trashFC.mp3");
+	this.load.audio("FF_trashQF","audio/FF/FF_trashQF.mp3");
 
+	this.load.audio("FF_petwasteBF","audio/FF/FF_petwasteBF.mp3");
+	this.load.audio("FF_petwasteQF","audio/FF/FF_petwasteQF.mp3");
+	this.load.audio("FF_petwasteQC","audio/FF/FF_petwasteQC.mp3");
+	this.load.audio("FF_petwasteFC","audio/FF/FF_petwasteFC.mp3");
+	this.load.audio("FF_petwasteCC","audio/FF/FF_petwasteCC.mp3");
+
+	this.load.audio("FF_trashbinQF","audio/FF/FF_trashbinQF.mp3");
+	this.load.audio("FF_trashbinQC","audio/FF/FF_trashbinQC.mp3");
+	this.load.audio("FF_trashbinBF","audio/FF/FF_trashbinBF.mp3");
+	this.load.audio("FF_trashbinBC","audio/FF/FF_trashbinBC.mp3");
+
+	this.load.audio("FF_downspoutQF","audio/FF/FF_downspoutQF.mp3");
+	this.load.audio("FF_downspoutQC","audio/FF/FF_downspoutQC.mp3");
+	this.load.audio("FF_downspoutBF","audio/FF/FF_downspoutBF.mp3");
+	this.load.audio("FF_downspoutBC","audio/FF/FF_downspoutBC.mp3");
     // Protect or Pollute
     this.load.image("pp_question_text", "assets/pp/pp_question_text.png");
     this.load.image("pp_score_title", "assets/pp/pp_score_title.png");
