@@ -1150,6 +1150,7 @@ var FFGameData = {
         },
         questionTitle: "THE LID IS ON\nTHE TRASH BIN",
         questionImage: "ff_image_trashbin_closed",
+		q_audio: "FF_trashbinQC",
         resultImage: "ff_image_trashbin_closed",
         correct: {
           resultUpperText:
@@ -1176,6 +1177,7 @@ var FFGameData = {
         },
         questionTitle: "THE TRASH BIN LID\nIS OPEN",
         questionImage: "ff_image_trashbin_open",
+		q_audio: "FF_trashbinQF",
         resultImage: "ff_image_trashbin_open",
         correct: {
           resultUpperText:
@@ -1361,8 +1363,8 @@ var FFGameData = {
             "YOU PREVENTED POLLUTION AND\nKEPT THE LOCAL WATERWAYS CLEAN!",
           resultLowerText:
             "WHEN YOU WASH YOUR DOG ON\nTHE DRIVEWAY, THE DIRTY WATER\nWILL FLOW INTO THE STORMDRAIN\nAND OUT TO LOCAL WATERWAYS.\nWASHING YOUR DOG IN A BATHTUB\nOR ON THE GRASS KEEPS DIRTY\nWATER OUT OF THE STORMDRAIN.",
+		  r_audio: "FF_washingdogFC",
         },
-			r_audio: "FF_washingdogFC",
         wrong: {
           resultUpperText:
             "THAT SENT SOAP AND DIRTY WATER\nINTO GUTTERS, DOWN THE STORMDRAIN\nAND POLLUTED LOCAL WATERWAYS!",

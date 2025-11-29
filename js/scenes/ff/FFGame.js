@@ -374,7 +374,7 @@ var FFGameState = {
     var data = FFGameData.options[option.id];
     var childData = option.wrong ? data.wrong : data.correct;
 	if (narrator) {
-		this.currentsound = AudioManager.playSound(data.q_audio,this);
+		this.currentsound = AudioManager.playSound(childData.q_audio,this);
 	}
 
     this.questionHeaderText.setText(childData.questionTitle);
@@ -402,7 +402,7 @@ var FFGameState = {
       correct ? "ff_correct_box" : "ff_oops_box"
     );
 	if(narrator) {
-		this.currentsound = AudioManager.playSound(dataChild.r_audio, this);
+		this.currentsound = AudioManager.playSound(dataChildText.r_audio, this);
 	}
     this.resultsBoxGroup.visible = true;
     this.resultsNextButton.visible = false;
