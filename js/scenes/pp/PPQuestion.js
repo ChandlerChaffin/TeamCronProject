@@ -46,6 +46,9 @@ var PPQuestionState = {
     var onPause = function () {
       AudioManager.playSound("bloop_sfx", this);
       LastState = "PPQuestionState";
+      if (this.currentsound && this.currentsound.isPlaying) {
+        this.currentsound.stop();
+      }
       this.state.start("PauseState");
     };
     this.pauseButton = this.add.button(
@@ -118,6 +121,7 @@ var PPQuestionState = {
 	this.keyEnter.onDown.add(() => {
 		const entry = PPGame.optionOrder[(this.focusIndex == 0) ? ((PPGame.optionOrder.length == 3) ? 2 : 1 ): this.focusIndex-1];
 		entry.button.cb.call(this);
+        this.currentsound.stop();
 		}, this);
 
   },

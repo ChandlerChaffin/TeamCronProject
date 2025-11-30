@@ -57,7 +57,6 @@ var TitleState = {
       .yoyo(true, 0)
       .loop(true);
 
-	//Play narration and hotkey instructions 
 
     // Audio
     AudioManager.playSong("title_music", this);

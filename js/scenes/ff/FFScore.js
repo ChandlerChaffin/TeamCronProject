@@ -41,6 +41,31 @@ var FFScoreState = {
     this.scoreText.addFontWeight("bold", 0);
     this.scoreText.addFontWeight("normal", 11);
     this.scoreText.resolution = 2;
+    // Narration score
+    switch(FFGame.score) {
+        case 0:
+            AudioManager.playSound("FF_score0",this);
+            break;
+        case 1:
+            AudioManager.playSound("FF_score1",this);
+            break;
+        case 2:
+            AudioManager.playSound("FF_score2",this);
+            break;
+        case 3:
+            AudioManager.playSound("FF_score3",this);
+            break;
+        case 4:
+            AudioManager.playSound("FF_score4",this);
+            break;
+        case 5:
+            AudioManager.playSound("FF_score5",this);
+            break;
+        case 6:
+            AudioManager.playSound("FF_score6",this);
+            break;
+
+    }
 
     // Buttons
     this.homeButton = this.add.button(
@@ -123,6 +148,19 @@ var FFScoreState = {
   },
   cycleFocus: function() {
   	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+    if (narrator) {
+        if (this.currentsound && this.currentsound.isPlaying) {
+            this.currentsound.stop();
+        }
+        switch (this.focusIndex) {
+            case 0:
+                this.currentsound = AudioManager.playSound("home_button",this);
+                break;
+            case 1:
+                this.currentsound = AudioManager.playSound("restart_button",this);
+                break;
+        }
+    }
 	this.updateButtonHighlight();
   },
   activateButton: function() {

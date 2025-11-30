@@ -152,6 +152,19 @@ var PPScoreState = {
   },
   cycleFocus: function() {
   	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+    if (narrator) {
+        if (this.currentsound && this.currentsound.isPlaying) {
+            this.currentsound.stop();
+        }
+        switch (this.focusIndex) {
+            case 0:
+                this.currentsound = AudioManager.playSound("home_button",this);
+                break;
+            case 1:
+                this.currentsound = AudioManager.playSound("restart_button",this);
+                break;
+        }
+    }
 	this.updateButtonHighlight();
   },
   activateButton: function() {

@@ -90,6 +90,9 @@ var PPRainState = {
     var onPause = function () {
       AudioManager.playSound("bloop_sfx", this);
       LastState = "PPRainState";
+      if (this.currentsound && this.currentsound.isPlaying) {
+        this.currentsound.stop();
+      }
       this.state.start("PauseState");
     };
     this.pauseButton = this.add.button(

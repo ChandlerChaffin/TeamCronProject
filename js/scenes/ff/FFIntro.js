@@ -128,9 +128,9 @@ var FFIntroState = {
     createMuteButton(this);
 	//Narrator button
 	this.narratorButton = createNarratorButton(this);
-		// if (narrator) {
-		//     this.currentsound = AudioManager.playSound("FFintro_1",this);
-		// }
+		if (narrator) {
+		    this.currentsound = AudioManager.playSound("FFintro1",this);
+		}
 
     // Start Animation
     this.nextDelay = 1000;
@@ -195,9 +195,9 @@ var FFIntroState = {
         this.professorSprite2.visible = true;
         this.speechText2.visible = true;
 		createNarratorButton(this);
-		// if (narrator) {
-		//     this.currentsound = AudioManager.playSound("FFintro_2",this);
-		// }
+		if (narrator) {
+		    this.currentsound = AudioManager.playSound("FFintro2",this);
+		}
         this.add
           .tween(this.speechText2.scale)
           .from({ x: 0.0, y: 0.0 }, this.animationSpeed, "Elastic", true);
@@ -217,9 +217,9 @@ var FFIntroState = {
         this.professorSprite3.visible = true;
         this.speechText3.visible = true;
 		createNarratorButton(this);
-		// if (narrator) {
-		//     this.currentsound = AudioManager.playSound("FFintro_3",this);
-		// }
+		if (narrator) {
+		    this.currentsound = AudioManager.playSound("FFintro3",this);
+		}
 
         this.add
           .tween(this.speechText3.scale)
@@ -240,10 +240,9 @@ var FFIntroState = {
         this.professorSprite4.visible = true;
         this.speechText4.visible = true;
 		createNarratorButton(this);
-		// if (narrator) {
-		//     this.currentsound = AudioManager.playSound("FFintro_4",this);
-		// }
-
+		if (narrator) {
+		    this.currentsound = AudioManager.playSound("FFintro4",this);
+		}
         this.add
           .tween(this.speechText4.scale)
           .from({ x: 0.0, y: 0.0 }, this.animationSpeed, "Elastic", true);
@@ -266,9 +265,9 @@ var FFIntroState = {
   },
   nextButtonActions: {
     onClick: function () {
-	  //if (this.currentsound && this.currentsound.isPlaying) {
-	  //	this.currentsound.stop();
-	  //}
+	  if (this.currentsound && this.currentsound.isPlaying) {
+	  	this.currentsound.stop();
+	  }
       AudioManager.playSound("bloop_sfx", this);
       this.nextSubScene();
     },

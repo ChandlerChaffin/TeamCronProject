@@ -538,6 +538,9 @@ var FFGameState = {
 		this.questionOptions[this.focusQIndex].cb.call(this);
 	}
 	else {
+        if (this.currentsound && this.currentsound.isPlaying) {
+            this.currentsound.stop();
+        }
 		this.resultsNextButton.cb.call(this);
 	}
   },

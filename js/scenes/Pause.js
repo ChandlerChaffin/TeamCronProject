@@ -145,6 +145,28 @@ var PauseState = {
   },
   cycleFocus: function() {
   	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+    if (narrator) {
+        if (this.currentsound && this.currentsound.isPlaying) {
+            this.currentsound.stop();
+        }
+        switch (this.focusIndex) {
+            case 0:
+                this.currentsound = AudioManager.playSound("resume_button",this); 
+                break;
+            case 1:
+                this.currentsound = AudioManager.playSound("restart_button",this); 
+                break;
+            case 2: 
+                this.currentsound = AudioManager.playSound("narrator_toggle",this); 
+                break;
+            case 3:
+                this.currentsound = AudioManager.playSound("home_button",this); 
+                break;
+            case 4:
+                this.currentsound = AudioManager.playSound("mute_button",this); 
+                break;
+         }
+    }
 	this.updateButtonHighlight();
   },
   activateButton: function() {

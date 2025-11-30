@@ -105,6 +105,15 @@ var LoadState = {
     this.load.audio("wrong_sfx", "audio/Sludge.mp3");
     this.load.audio("bloop_sfx", "audio/Bloop.mp3");
 
+    //Menu button narration
+    this.load.audio("Game_Intro","audio/Game_Intro.mp3");
+    this.load.audio("home_button","audio/Home.mp3");
+    this.load.audio("restart_button","audio/Restart.mp3");
+    this.load.audio("resume_button","audio/Resume.mp3");
+    this.load.audio("mute_button","audio/Mute.mp3");
+    this.load.audio("narrator_toggle","audio/ToggleNarrator.mp3");
+
+
     //Intro Narration
     this.load.audio("intro1","audio/Intro1.mp3");
     this.load.audio("intro2","audio/Intro2.mp3");
@@ -240,6 +249,13 @@ var LoadState = {
 	this.load.audio("FFintro4","audio/FF/FFIntro_4.mp3");
 	this.load.audio("FF_FixIt","audio/FF/FF_Fixit.mp3");
 	this.load.audio("FF_ItsOk","audio/FF/FF_ItsOk.mp3");
+    this.load.audio("FF_score0","audio/FF/FF_score0.mp3");
+    this.load.audio("FF_score1","audio/FF/FF_score1.mp3");
+    this.load.audio("FF_score2","audio/FF/FF_score2.mp3");
+    this.load.audio("FF_score3","audio/FF/FF_score3.mp3");
+    this.load.audio("FF_score4","audio/FF/FF_score4.mp3");
+    this.load.audio("FF_score5","audio/FF/FF_score5.mp3");
+    this.load.audio("FF_score6","audio/FF/FF_score6.mp3");
 	// FF Option Sprites narration
 	
 	this.load.audio("FF_dirt","audio/FF/FF_dirt.mp3");
@@ -250,7 +266,7 @@ var LoadState = {
 	this.load.audio("FF_washingcar","audio/FF/FF_washingcar.mp3");
 	this.load.audio("FF_washingdog","audio/FF/FF_washingdog.mp3");
 	this.load.audio("FF_dogwaste","audio/FF/FF_dogwaste.mp3");
-	//this.load.audio("FF_sprinkler","audio/FF/FF_sprinkler.mp3");
+	this.load.audio("FF_sprinkler","audio/FF/FF_sprinklers.mp3");
 
 	//FF results narration
 	this.load.audio("FF_sprinklerQC","audio/FF/FF_sprinklerQC.mp3");
