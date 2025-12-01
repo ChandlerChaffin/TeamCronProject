@@ -349,7 +349,7 @@ var PPGameData = {
           {
             name: "pp_1_3c",
             audio: "PPquestion1_3_c",
-			audio_result: "PPresult1_2c",
+			audio_result: "PPresult1_3c",
             correct: false,
             wetlands: {
               overlay: 0,
