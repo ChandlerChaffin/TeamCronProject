@@ -115,6 +115,8 @@ var PPIntroState = {
 
     // Mute button
     createMuteButton(this);
+	// Narrator button
+	this.narratorButton = createNarratorButton(this);
 
     // Start Animation
     this.nextDelay = 1000;
@@ -133,6 +135,12 @@ var PPIntroState = {
       },
       this
     );
+	if (narrator) {
+		this.currentsound = AudioManager.playSound("PPintro_1", this);
+	}
+    // enter key to progress through intro texts
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -148,20 +156,21 @@ var PPIntroState = {
         this.trashcanSprite.visible = false;
         this.dirtSprite.visible = false;
         this.dogSprite.visible = false;
-
         this.nextButton.visible = false;
+		this.narratorButton.destroy();
         break;
       case 1:
         this.professorSprite2.visible = false;
         this.speechText2.visible = false;
-
         this.nextButton.visible = false;
+		this.narratorButton.destroy();
         break;
       case 2:
         this.professorSprite3.visible = false;
         this.speechText3.visible = false;
 
         this.nextButton.visible = false;
+		this.narratorButton.destroy();
         break;
     }
 
@@ -174,7 +183,10 @@ var PPIntroState = {
         this.professorSprite2.visible = true;
         this.speechText2.visible = true;
         this.wetlandsSprite.visible = true;
-
+		createNarratorButton(this);
+		if (narrator) {
+			this.currentsound = AudioManager.playSound("PPintro_2",this);
+		}
         this.add
           .tween(this.speechText2.scale)
           .from({ x: 0.0, y: 0.0 }, this.animationSpeed, "Elastic", true);
@@ -196,6 +208,10 @@ var PPIntroState = {
       case 2:
         this.professorSprite3.visible = true;
         this.speechText3.visible = true;
+		createNarratorButton(this);
+		if (narrator) {
+			this.currentsound = AudioManager.playSound("PPintro_3", this);
+		}
 
         this.add
           .tween(this.speechText3.scale)
@@ -219,6 +235,9 @@ var PPIntroState = {
   },
   nextButtonActions: {
     onClick: function () {
+	  if (this.currentsound && this.currentsound.isPlaying) {
+		  this.currentsound.stop();
+	  }
       AudioManager.playSound("bloop_sfx", this);
       this.nextSubScene();
     },

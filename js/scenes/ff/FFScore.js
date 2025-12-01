@@ -4,7 +4,6 @@ var FFScoreState = {
   preload: function () {},
   create: function () {
     this.subSceneIndex = 0;
-
     // Background
     this.backgroundSprite = this.add.sprite(0, 0, "background_1");
 
@@ -42,6 +41,31 @@ var FFScoreState = {
     this.scoreText.addFontWeight("bold", 0);
     this.scoreText.addFontWeight("normal", 11);
     this.scoreText.resolution = 2;
+    // Narration score
+    switch(FFGame.score) {
+        case 0:
+            AudioManager.playSound("FF_score0",this);
+            break;
+        case 1:
+            AudioManager.playSound("FF_score1",this);
+            break;
+        case 2:
+            AudioManager.playSound("FF_score2",this);
+            break;
+        case 3:
+            AudioManager.playSound("FF_score3",this);
+            break;
+        case 4:
+            AudioManager.playSound("FF_score4",this);
+            break;
+        case 5:
+            AudioManager.playSound("FF_score5",this);
+            break;
+        case 6:
+            AudioManager.playSound("FF_score6",this);
+            break;
+
+    }
 
     // Buttons
     this.homeButton = this.add.button(
@@ -96,6 +120,16 @@ var FFScoreState = {
 
     // Audio
     AudioManager.playSong("results_music", this);
+	//Tab Enter
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	//focus index and button array
+	this.focusIndex = 0;
+	this.buttons = [this.homeButton, this.replayButton];
+	this.updateButtonHighlight();
+	//key push actions
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -112,4 +146,40 @@ var FFScoreState = {
       this.state.start("FFGameState");
     },
   },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+    if (narrator) {
+        if (this.currentsound && this.currentsound.isPlaying) {
+            this.currentsound.stop();
+        }
+        switch (this.focusIndex) {
+            case 0:
+                this.currentsound = AudioManager.playSound("home_button",this);
+                break;
+            case 1:
+                this.currentsound = AudioManager.playSound("restart_button",this);
+                break;
+        }
+    }
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	if (this.focusIndex === 0) {
+		this.homeButtonActions.onClick.call(this);
+	}
+	else {
+		this.replayButtonActions.onClick.call(this);
+	}
+  },
+  updateButtonHighlight: function() {
+		for (var i = 0; i < this.buttons.length; i++) {
+			var btn = this.buttons[i];
+			if (i === this.focusIndex) {
+				btn.tint = 0x8D35B6;
+			}
+			else {
+				btn.tint = 0xFFFFFF;
+			}
+		}
+	},
 };

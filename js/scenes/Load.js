@@ -90,6 +90,8 @@ var LoadState = {
       152,
       58
     );
+	//Narrator button
+	this.load.spritesheet("button_narrator", "assets/button/Narrator_Button_1.png",115,115);
 
     // Audio
     this.load.audio("title_music", "audio/JoyInTheWorldNew.mp3");
@@ -103,6 +105,217 @@ var LoadState = {
     this.load.audio("wrong_sfx", "audio/Sludge.mp3");
     this.load.audio("bloop_sfx", "audio/Bloop.mp3");
 
+    //Menu button narration
+    this.load.audio("Game_Intro","audio/Game_Intro.mp3");
+    this.load.audio("home_button","audio/Home.mp3");
+    this.load.audio("restart_button","audio/Restart.mp3");
+    this.load.audio("resume_button","audio/Resume.mp3");
+    this.load.audio("mute_button","audio/Mute.mp3");
+    this.load.audio("narrator_toggle","audio/ToggleNarrator.mp3");
+
+
+    //Intro Narration
+    this.load.audio("intro1","audio/Intro1.mp3");
+    this.load.audio("intro2","audio/Intro2.mp3");
+    this.load.audio("intro3","audio/Intro3.mp3");
+    this.load.audio("intro4","audio/Intro4.mp3");
+    this.load.audio("intro5","audio/Intro5.mp3");
+    this.load.audio("Choose","audio/ChooseGame.mp3");
+    this.load.audio("Title_PP","audio/PPTitle.mp3");
+    this.load.audio("Title_FF","audio/FFTitle.mp3");
+	
+	//Misc PP audio
+	this.load.audio("ChooseLevelPP","audio/ChooseLevel.mp3");
+	this.load.audio("Correct_PP","audio/Correct_PP.mp3");
+	this.load.audio("PPFinal_0","audio/PPFinal_0.mp3");
+	this.load.audio("PPFinal_1","audio/PPFinal_1.mp3");
+	this.load.audio("PPFinal_2","audio/PPFinal_2.mp3");
+	this.load.audio("PPFinal_3","audio/PPFinal_3.mp3");
+	this.load.audio("PPFinal_4","audio/PPFinal_4.mp3");
+	this.load.audio("PPFinal_5","audio/PPFinal_5.mp3");
+	this.load.audio("PPRain_Scene","audio/RainScene.mp3");
+	this.load.audio("Oops","audio/Oops.mp3");
+	this.load.audio("PPLevel1","audio/PPLevel1.mp3");
+	this.load.audio("PPLevel2","audio/PPLevel2.mp3");
+	this.load.audio("PPLevel3","audio/PPLevel3.mp3");
+	
+    
+     //PP Narration 
+    this.load.audio("PPintro_1","audio/PPIntro1.mp3"); // done
+    this.load.audio("PPintro_2","audio/PPIntro2.mp3"); // done
+    this.load.audio("PPintro_3","audio/PPIntro3.mp3"); // done
+
+    //PP Level 1 narration
+    this.load.audio("PPquestion1_1","audio/Level1/PPQuestion1_1.mp3");
+    this.load.audio("PPquestion1_1_a","audio/Level1/PPQuestion1_1_a.mp3");
+    this.load.audio("PPquestion1_1_b","audio/Level1/PPQuestion1_1_b.mp3");
+    this.load.audio("PPquestion1_1_c","audio/Level1/PPQuestion1_1_c.mp3");
+    this.load.audio("PPquestion1_2","audio/Level1/PPQuestion1_2.mp3");
+    this.load.audio("PPquestion1_2_a","audio/Level1/PPQuestion1_2_a.mp3");
+    this.load.audio("PPquestion1_2_b","audio/Level1/PPQuestion1_2_b.mp3");
+    this.load.audio("PPquestion1_3","audio/Level1/PPQuestion1_3.mp3");
+    this.load.audio("PPquestion1_3_a","audio/Level1/PPQuestion1_3_a.mp3");
+    this.load.audio("PPquestion1_3_b","audio/Level1/PPQuestion1_3_b.mp3");
+    this.load.audio("PPquestion1_3_c","audio/Level1/PPQuestion1_3_c.mp3");
+    this.load.audio("PPquestion1_4","audio/Level1/PPQuestion1_4.mp3");
+    this.load.audio("PPquestion1_4_a","audio/Level1/PPQuestion1_4_a.mp3");
+    this.load.audio("PPquestion1_4_b","audio/Level1/PPQuestion1_4_b.mp3");
+    this.load.audio("PPquestion1_5","audio/Level1/PPQuestion1_5.mp3");
+    this.load.audio("PPquestion1_5_a","audio/Level1/PPQuestion1_5_a.mp3");
+    this.load.audio("PPquestion1_5_b","audio/Level1/PPQuestion1_5_b.mp3");
+	//Level 1 result narration
+	this.load.audio("PPresult1_1a","audio/Level1/PPResult1_1a.mp3");
+	this.load.audio("PPresult1_1b","audio/Level1/PPResult1_1b.mp3");
+	this.load.audio("PPresult1_1c","audio/Level1/PPResult1_1c.mp3");
+	this.load.audio("PPresult1_2a","audio/Level1/PPResult1_2a.mp3");
+	this.load.audio("PPresult1_2b","audio/Level1/PPResult1_2b.mp3");
+	this.load.audio("PPresult1_3a","audio/Level1/PPResult1_3a.mp3");
+	this.load.audio("PPresult1_3b","audio/Level1/PPResult1_3b.mp3");
+	this.load.audio("PPresult1_3c","audio/Level1/PPResult1_3c.mp3");
+	this.load.audio("PPresult1_4a","audio/Level1/PPResult1_4a.mp3");
+	this.load.audio("PPresult1_4b","audio/Level1/PPResult1_4b.mp3");
+	this.load.audio("PPresult1_5a","audio/Level1/PPResult1_5a.mp3");
+	this.load.audio("PPresult1_5b","audio/Level1/PPResult1_5b.mp3");
+
+
+    //PP Level 2 narration
+    this.load.audio("PPquestion2_1","audio/Level2/PPQuestion2_1.mp3");
+    this.load.audio("PPquestion2_1_a","audio/Level2/PPQuestion2_1_a.mp3");
+    this.load.audio("PPquestion2_1_b","audio/Level2/PPQuestion2_1_b.mp3");
+    this.load.audio("PPquestion2_1_c","audio/Level2/PPQuestion2_1_c.mp3");
+    this.load.audio("PPquestion2_2","audio/Level2/PPQuestion2_2.mp3");
+    this.load.audio("PPquestion2_2_a","audio/Level2/PPQuestion2_2_a.mp3");
+    this.load.audio("PPquestion2_2_b","audio/Level2/PPQuestion2_2_b.mp3");
+    this.load.audio("PPquestion2_3","audio/Level2/PPQuestion2_3.mp3");
+    this.load.audio("PPquestion2_3_a","audio/Level2/PPQuestion2_3_a.mp3");
+    this.load.audio("PPquestion2_3_b","audio/Level2/PPQuestion2_3_b.mp3");
+    this.load.audio("PPquestion2_4","audio/Level2/PPQuestion2_4.mp3");
+    this.load.audio("PPquestion2_4_a","audio/Level2/PPQuestion2_4_a.mp3");
+    this.load.audio("PPquestion2_4_b","audio/Level2/PPQuestion2_4_b.mp3");
+    this.load.audio("PPquestion2_4_c","audio/Level2/PPQuestion2_4_c.mp3");
+    this.load.audio("PPquestion2_5","audio/Level2/PPQuestion2_5.mp3");
+    this.load.audio("PPquestion2_5_a","audio/Level2/PPQuestion2_5_a.mp3");
+    this.load.audio("PPquestion2_5_b","audio/Level2/PPQuestion2_5_b.mp3");
+    this.load.audio("PPquestion2_5_c","audio/Level2/PPQuestion2_5_c.mp3");
+	//PP Level 2 result narration
+	this.load.audio("PPresult2_1a","audio/Level2/PPResult2_1a.mp3");
+	this.load.audio("PPresult2_1b","audio/Level2/PPResult2_1b.mp3");
+	this.load.audio("PPresult2_1c","audio/Level2/PPResult2_1c.mp3");
+	this.load.audio("PPresult2_2a","audio/Level2/PPResult2_2a.mp3");
+	this.load.audio("PPresult2_2b","audio/Level2/PPResult2_2b.mp3");
+	this.load.audio("PPresult2_3a","audio/Level2/PPResult2_3a.mp3");
+	this.load.audio("PPresult2_3b","audio/Level2/PPResult2_3b.mp3");
+	this.load.audio("PPresult2_4a","audio/Level2/PPResult2_4a.mp3");
+	this.load.audio("PPresult2_4b","audio/Level2/PPResult2_4b.mp3");
+	this.load.audio("PPresult2_4c","audio/Level2/PPResult2_4c.mp3");
+	this.load.audio("PPresult2_5a","audio/Level2/PPResult2_5a.mp3");
+	this.load.audio("PPresult2_5b","audio/Level2/PPResult2_5b.mp3");
+	this.load.audio("PPresult2_5c","audio/Level2/PPResult2_5c.mp3");
+
+    //PP level 3 narration 
+    this.load.audio("PPquestion3_1","audio/Level3/PPQuestion3_1.mp3");
+    this.load.audio("PPquestion3_1_a","audio/Level3/PPQuestion3_1_a.mp3");
+    this.load.audio("PPquestion3_1_b","audio/Level3/PPQuestion3_1_b.mp3");
+    this.load.audio("PPquestion3_2","audio/Level3/PPQuestion3_2.mp3");
+    this.load.audio("PPquestion3_2_a","audio/Level3/PPQuestion3_2_a.mp3");
+    this.load.audio("PPquestion3_2_b","audio/Level3/PPQuestion3_2_b.mp3");
+    this.load.audio("PPquestion3_3","audio/Level3/PPQuestion3_3.mp3");
+    this.load.audio("PPquestion3_3_a","audio/Level3/PPQuestion3_3_a.mp3");
+    this.load.audio("PPquestion3_3_b","audio/Level3/PPQuestion3_3_b.mp3");
+    this.load.audio("PPquestion3_4","audio/Level3/PPQuestion3_4.mp3");
+    this.load.audio("PPquestion3_4_a","audio/Level3/PPQuestion3_4_a.mp3");
+    this.load.audio("PPquestion3_4_b","audio/Level3/PPQuestion3_4_b.mp3");
+    this.load.audio("PPquestion3_5","audio/Level3/PPQuestion3_5.mp3");
+    this.load.audio("PPquestion3_5_a","audio/Level3/PPQuestion3_5_a.mp3");
+    this.load.audio("PPquestion3_5_b","audio/Level3/PPQuestion3_5_b.mp3");
+    this.load.audio("PPquestion3_5_c","audio/Level3/PPQuestion3_5_c.mp3");
+	// PP level 3 result narration
+	this.load.audio("PPresult3_1a","audio/Level3/PPResult3_1a.mp3");
+	this.load.audio("PPresult3_1b","audio/Level3/PPResult3_1b.mp3");
+	this.load.audio("PPresult3_2a","audio/Level3/PPResult3_2a.mp3");
+	this.load.audio("PPresult3_2b","audio/Level3/PPResult3_2b.mp3");
+	this.load.audio("PPresult3_3a","audio/Level3/PPResult3_3a.mp3");
+	this.load.audio("PPresult3_3b","audio/Level3/PPResult3_3b.mp3");
+	this.load.audio("PPresult3_4a","audio/Level3/PPResult3_4a.mp3");
+	this.load.audio("PPresult3_4b","audio/Level3/PPResult3_4b.mp3");
+	this.load.audio("PPresult3_5a","audio/Level3/PPResult3_5a.mp3");
+	this.load.audio("PPresult3_5b","audio/Level3/PPResult3_5b.mp3");
+	this.load.audio("PPresult3_5c","audio/Level3/PPResult3_5c.mp3");
+
+	// Find it or Fix it intro + misc
+	this.load.audio("FFintro1","audio/FF/FFIntro_1.mp3");
+	this.load.audio("FFintro2","audio/FF/FFIntro_2.mp3");
+	this.load.audio("FFintro3","audio/FF/FFIntro_3.mp3");
+	this.load.audio("FFintro4","audio/FF/FFIntro_4.mp3");
+	this.load.audio("FF_FixIt","audio/FF/FF_Fixit.mp3");
+	this.load.audio("FF_ItsOk","audio/FF/FF_ItsOk.mp3");
+    this.load.audio("FF_score0","audio/FF/FF_score0.mp3");
+    this.load.audio("FF_score1","audio/FF/FF_score1.mp3");
+    this.load.audio("FF_score2","audio/FF/FF_score2.mp3");
+    this.load.audio("FF_score3","audio/FF/FF_score3.mp3");
+    this.load.audio("FF_score4","audio/FF/FF_score4.mp3");
+    this.load.audio("FF_score5","audio/FF/FF_score5.mp3");
+    this.load.audio("FF_score6","audio/FF/FF_score6.mp3");
+	// FF Option Sprites narration
+	
+	this.load.audio("FF_dirt","audio/FF/FF_dirt.mp3");
+	this.load.audio("FF_downspout","audio/FF/FF_downspout.mp3");
+	this.load.audio("FF_oil","audio/FF/FF_oil.mp3");
+	this.load.audio("FF_trash","audio/FF/FF_trash.mp3");
+	this.load.audio("FF_trashbin","audio/FF/FF_trashbin.mp3");
+	this.load.audio("FF_washingcar","audio/FF/FF_washingcar.mp3");
+	this.load.audio("FF_washingdog","audio/FF/FF_washingdog.mp3");
+	this.load.audio("FF_dogwaste","audio/FF/FF_dogwaste.mp3");
+	this.load.audio("FF_sprinkler","audio/FF/FF_sprinklers.mp3");
+
+	//FF results narration
+	this.load.audio("FF_sprinklerQC","audio/FF/FF_sprinklerQC.mp3");
+	this.load.audio("FF_sprinklerQF","audio/FF/FF_sprinklerQF.mp3");
+	this.load.audio("FF_sprinklerCC","audio/FF/FF_sprinklerCC.mp3");
+	this.load.audio("FF_sprinklerCF","audio/FF/FF_sprinklerCF.mp3");
+	this.load.audio("FF_sprinklerFC","audio/FF/FF_sprinklerFC.mp3");
+	this.load.audio("FF_sprinklerFF","audio/FF/FF_sprinklerFF.mp3");
+
+	this.load.audio("FF_oilFF","audio/FF/FF_oilFF.mp3");
+	this.load.audio("FF_oilFC","audio/FF/FF_oilFC.mp3");
+	this.load.audio("FF_oilQF","audio/FF/FF_oilQF.mp3");
+
+	this.load.audio("FF_dirtFF","audio/FF/FF_dirtFF.mp3");
+	this.load.audio("FF_dirtFC","audio/FF/FF_dirtFC.mp3");
+	this.load.audio("FF_dirtQF","audio/FF/FF_dirtQF.mp3");
+
+
+	this.load.audio("FF_washingcarQC","audio/FF/FF_washingcarQC.mp3");
+	this.load.audio("FF_washingcarQF","audio/FF/FF_washingcarQF.mp3");
+	this.load.audio("FF_washingcarBF","audio/FF/FF_washingcarBF.mp3");
+	this.load.audio("FF_washingcarFC","audio/FF/FF_washingcarFC.mp3");
+	this.load.audio("FF_washingcarCC","audio/FF/FF_washingcarCC.mp3");
+
+	this.load.audio("FF_washingdogBF","audio/FF/FF_washingdogBF.mp3");
+	this.load.audio("FF_washingdogQF","audio/FF/FF_washingdogQF.mp3");
+	this.load.audio("FF_washingdogQC","audio/FF/FF_washingdogQC.mp3");
+	this.load.audio("FF_washingdogFC","audio/FF/FF_washingdogFC.mp3");
+	this.load.audio("FF_washingdogCC","audio/FF/FF_washingdogCC.mp3");
+
+	this.load.audio("FF_trashFF","audio/FF/FF_trashFF.mp3");
+	this.load.audio("FF_trashFC","audio/FF/FF_trashFC.mp3");
+	this.load.audio("FF_trashQF","audio/FF/FF_trashQF.mp3");
+
+	this.load.audio("FF_petwasteBF","audio/FF/FF_petwasteBF.mp3");
+	this.load.audio("FF_petwasteQF","audio/FF/FF_petwasteQF.mp3");
+	this.load.audio("FF_petwasteQC","audio/FF/FF_petwasteQC.mp3");
+	this.load.audio("FF_petwasteFC","audio/FF/FF_petwasteFC.mp3");
+	this.load.audio("FF_petwasteCC","audio/FF/FF_petwasteCC.mp3");
+
+	this.load.audio("FF_trashbinQF","audio/FF/FF_trashbinQF.mp3");
+	this.load.audio("FF_trashbinQC","audio/FF/FF_trashbinQC.mp3");
+	this.load.audio("FF_trashbinBF","audio/FF/FF_trashbinBF.mp3");
+	this.load.audio("FF_trashbinBC","audio/FF/FF_trashbinBC.mp3");
+
+	this.load.audio("FF_downspoutQF","audio/FF/FF_downspoutQF.mp3");
+	this.load.audio("FF_downspoutQC","audio/FF/FF_downspoutQC.mp3");
+	this.load.audio("FF_downspoutBF","audio/FF/FF_downspoutBF.mp3");
+	this.load.audio("FF_downspoutBC","audio/FF/FF_downspoutBC.mp3");
     // Protect or Pollute
     this.load.image("pp_question_text", "assets/pp/pp_question_text.png");
     this.load.image("pp_score_title", "assets/pp/pp_score_title.png");

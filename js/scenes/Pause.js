@@ -44,6 +44,7 @@ var PauseState = {
       0,
       1
     );
+	this.resumeButton.inputEnabled = true;
     this.resumeButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.resumeButton.scale)
@@ -61,6 +62,7 @@ var PauseState = {
       0,
       1
     );
+	this.restartButton.inputEnabled = true;
     this.restartButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.restartButton.scale)
@@ -69,7 +71,7 @@ var PauseState = {
       .loop(true);
 
     this.homeButton = this.add.button(
-      0.4 * WIDTH,
+      0.5 * WIDTH,
       0.77 * HEIGHT,
       "button_home",
       this.homeButtonActions.onClick,
@@ -78,6 +80,7 @@ var PauseState = {
       0,
       1
     );
+	this.homeButton.inputEnabled = true;
     this.homeButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.homeButton.scale)
@@ -86,7 +89,8 @@ var PauseState = {
       .loop(true);
 
     // Mute Button
-    this.muteButton = createMuteButtonPos(this, 0.6, 0.77);
+    this.muteButton = createMuteButtonPos(this, 0.7, 0.77);
+	this.muteButton.inputEnabled = true;
     this.muteButton.anchor.setTo(0.5, 0.5);
     this.muteButton.scale.setTo(1.0, 1.0);
     this.add
@@ -94,6 +98,25 @@ var PauseState = {
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
+	this.narratorButton = createNarratorButtonPos(this,0.8,0.52,1.0); 
+	this.narratorButton.anchor.setTo(0.5,0.5);
+	this.add
+		.tween(this.narratorButton.scale)
+		.to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
+		.yoyo(true, 0)
+		.loop(true);
+
+
+	//Keyboard input tab/enter
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	this.input.keyboard.addKeyCapture(Phaser.Keyboard.TAB);
+	//focus index and button array for cycling. 
+	this.focusIndex = 0;
+	this.buttons = [this.resumeButton, this.restartButton,this.narratorButton, this.homeButton, this.muteButton];
+	this.updateButtonHighlight();
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -120,4 +143,60 @@ var PauseState = {
       this.state.start("ChooseGameState");
     },
   },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+    if (narrator) {
+        if (this.currentsound && this.currentsound.isPlaying) {
+            this.currentsound.stop();
+        }
+        switch (this.focusIndex) {
+            case 0:
+                this.currentsound = AudioManager.playSound("resume_button",this); 
+                break;
+            case 1:
+                this.currentsound = AudioManager.playSound("restart_button",this); 
+                break;
+            case 2: 
+                this.currentsound = AudioManager.playSound("narrator_toggle",this); 
+                break;
+            case 3:
+                this.currentsound = AudioManager.playSound("home_button",this); 
+                break;
+            case 4:
+                this.currentsound = AudioManager.playSound("mute_button",this); 
+                break;
+         }
+    }
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	switch (this.focusIndex) {
+		case 0:
+			this.resumeButtonActions.onClick.call(this);
+			break;
+		case 1:
+			this.restartButtonActions.onClick.call(this);
+			break;
+		case 2: 
+			this.narratorButtonActions.onClick.call(this);
+			break;
+		case 3:
+			this.homeButtonActions.onClick.call(this);
+			break;
+		case 4:
+			this.muteButtonActions.onClick.call(this);
+			break;
+  	 }
+   },
+   updateButtonHighlight: function() {
+		for (var i = 0; i <this.buttons.length; i++) {
+			var btn = this.buttons[i];
+			if (i === this.focusIndex) {
+				btn.tint = 0xA149CA;
+			}
+			else {
+				btn.tint = 0xffffff;
+			}
+		}
+	},
 };

@@ -48,9 +48,23 @@ var TitleState = {
 
     // Mute button
     createMuteButton(this);
+	// Narrator button
+	this.narratorButton = createNarratorButtonPos(this, 0.50, 0.68,1.0);
+	this.narratorButton.anchor.setTo(0.5, 0.5);
+    this.add
+      .tween(this.narratorButton.scale)
+      .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
+      .yoyo(true, 0)
+      .loop(true);
+
 
     // Audio
     AudioManager.playSong("title_music", this);
+
+    //Keyboard-Input-EnterProg
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.playButtonActions.onClick, this);
+
   },
   update: function () {
     updateCloudSprites(this);

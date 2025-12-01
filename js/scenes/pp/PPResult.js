@@ -397,17 +397,40 @@ var PPResultState = {
     // SFX
     if (correct) {
       AudioManager.playSound("correct_sfx", this);
-    } else {
-      AudioManager.playSound("wrong_sfx", this);
+	  if (narrator) {
+	  	this.currentsound = AudioManager.playSound("Correct_PP",this);
+		this.nextDelay = 5000;
+	  }
     }
+	else {
+      AudioManager.playSound("wrong_sfx", this);
+	  if (narrator) {
+		this.currentsound = AudioManager.playSound("Oops",this);
+		this.nextDelay = 1000;
+	  }
+    }
+	var current_key = chosenOption.audio_result;
+	this.time.events.add(
+		this.nextDelay,
+		function () {
+			if (narrator) {
+				this.currentsound = AudioManager.playSound(current_key,this);
+			}
+		},
+		this
+	);
 
     // Mute button
-    createMuteButton(this);
+    createMuteButton(this);	
+
 
     // Pause Button
     var onPause = function () {
       AudioManager.playSound("bloop_sfx", this);
       LastState = "PPResultState";
+      if (this.currentsound && this.currentsound.isPlaying) {
+        this.currentsound.stop();
+      }
       this.state.start("PauseState");
     };
     this.pauseButton = this.add.button(
@@ -421,11 +444,21 @@ var PPResultState = {
       1
     );
     this.pauseButton.scale.setTo(0.75);
+	this.pauseButton.inputEnabled = true;
+    // enter to progress
+    this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.keyEnter.onDown.add(this.nextButtonActions.onClick, this);
+	// P to pause
+	this.keyP = this.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(onPause,this);
+
   },
   update: function () {},
   nextButtonActions: {
     onClick: function () {
       AudioManager.playSound("bloop_sfx", this);
+	  if (this.currentsound && this.currentsound.isPlaying) {
+		this.currentsound.stop();
+	  }
       if (PPGame.questionsCompleted < 4) {
         PPGame.questionId = PPGame.questionOrder[++PPGame.questionsCompleted];
         this.state.start("PPQuestionState");

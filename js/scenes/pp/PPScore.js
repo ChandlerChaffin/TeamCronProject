@@ -54,6 +54,7 @@ var PPScoreState = {
       0,
       1
     );
+	this.homeButton.inputEnabled = true;
     this.homeButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.homeButton.scale)
@@ -71,12 +72,38 @@ var PPScoreState = {
       0,
       1
     );
+	this.replayButton.inputEnabled = true;
     this.replayButton.anchor.setTo(0.5, 0.5);
     this.add
       .tween(this.replayButton.scale)
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
+
+	//Narration final score
+	if (narrator) {
+		switch (PPGame.score) {
+			case 0:
+				AudioManager.playSound("PPFinal_0",this);
+				break;
+			case 1:
+				AudioManager.playSound("PPFinal_1",this);
+				break;
+			case 2:
+				AudioManager.playSound("PPFinal_2",this);
+				break;
+			case 3:
+				AudioManager.playSound("PPFinal_3",this);
+				break;
+			case 4:
+				AudioManager.playSound("PPFinal_4",this);
+				break;
+			case 5:
+				AudioManager.playSound("PPFinal_5",this);
+				break;
+		}
+
+	}
 
     // Mute button
     createMuteButton(this);
@@ -96,6 +123,17 @@ var PPScoreState = {
 
     // Audio
     AudioManager.playSong("results_music", this);
+
+	// Tab/Enter keys
+	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+	// focus index and button array
+	this.focusIndex = 0;
+	this.buttons = [this.homeButton, this.replayButton];
+	this.updateButtonHighlight();
+	//key push actions
+	this.keyTab.onDown.add(this.cycleFocus, this);
+	this.keyEnter.onDown.add(this.activateButton, this);
   },
   update: function () {
     updateCloudSprites(this);
@@ -111,5 +149,41 @@ var PPScoreState = {
       AudioManager.playSound("bloop_sfx", this);
       this.state.start("PPLevelSelectState");
     },
+  },
+  cycleFocus: function() {
+  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+    if (narrator) {
+        if (this.currentsound && this.currentsound.isPlaying) {
+            this.currentsound.stop();
+        }
+        switch (this.focusIndex) {
+            case 0:
+                this.currentsound = AudioManager.playSound("home_button",this);
+                break;
+            case 1:
+                this.currentsound = AudioManager.playSound("restart_button",this);
+                break;
+        }
+    }
+	this.updateButtonHighlight();
+  },
+  activateButton: function() {
+  	if (this.focusIndex === 0) {
+		this.homeButtonActions.onClick.call(this);
+	}
+	else {
+		this.replayButtonActions.onClick.call(this);
+	}
+  },
+  updateButtonHighlight: function() {
+  	for (var i = 0; i < this.buttons.length; i++) {
+		var btn = this.buttons[i];
+		if (i === this.focusIndex) {
+			btn.tint = 0x8D35B6;
+		}
+		else {
+			btn.tint = 0xffffff;
+		}
+	}
   },
 };
