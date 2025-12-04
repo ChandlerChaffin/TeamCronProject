@@ -72,7 +72,7 @@ var TitleState = {
   playButtonActions: {
     onClick: function () {
       AudioManager.playSound("bloop_sfx", this);
-      this.state.start("IntroState");
+      this.state.start("InstructionState");
     },
   },
 };

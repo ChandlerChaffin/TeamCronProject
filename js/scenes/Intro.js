@@ -184,16 +184,11 @@ var IntroState = {
       .to({ x: 1.1, y: 1.1 }, 600, "Linear", true)
       .yoyo(true, 0)
       .loop(true);
-    AudioManager.playSound("Game_Intro",this);
-    this.time.events.add(
-        11000,
-        function () {
-            if (narrator) {
-                this.currentsound = AudioManager.playSound("intro1",this);
-            }
-        },
-        this
-    );
+
+    if (narrator) {
+        this.currentsound = AudioManager.playSound("intro1",this);
+    }
+   
     // Start Animation
     this.nextDelay = 1000;
     this.animationSpeed = 500;
