@@ -1,10 +1,14 @@
 "use strict";
 
 var AudioManager = {
+  indexNarratorOn: 0,
+  indexNarratorOnActive: 1,
+  indexNarratorOff: 2,
+  indexNarratorOffActive: 3,
+
   init: function () {
     this.indexAB = 0;
     this.indexC = 1;
-    this.indexAB_n = 0;
   },
 
   toggleMusic: function (screen) {
@@ -42,12 +46,10 @@ var AudioManager = {
   toggleNarrator: function (screen) {
   	narrator = !narrator;
 	if (narrator) {
-      screen.narratorButton.setFrames(0, 0, 0);
-      this.indexAB_n = 0;
+      screen.narratorButton.setFrames(this.indexNarratorOn, this.indexNarratorOn, this.indexNarratorOnActive);
 	}
 	else {
-	  screen.narratorButton.setFrames(1,1,1);
-      this.indexAB_n = 1;
+	  screen.narratorButton.setFrames(this.indexNarratorOff, this.indexNarratorOff, this.indexNarratorOffActive);
 	}
   },
 };
@@ -64,37 +66,21 @@ var muteButtonActions = {
 };
 
 function createNarratorButton(scene) {
-  var indexAB_n = AudioManager.indexAB_n;
-  scene.narratorButtonActions = narratorButtonActions;
-  
-  scene.narratorButton = scene.add.button(
-    0.892 * WIDTH,
-    0.22 * HEIGHT,
-    "button_narrator", // change to new button
-    scene.narratorButtonActions.onClick,
-    scene,
-    indexAB_n,
-    indexAB_n,
-    indexAB_n
-  );
-  scene.narratorButton.scale.setTo(0.75);
-  scene.input.keyboard.addKey(Phaser.Keyboard.N).onDown.add(scene.narratorButtonActions.onClick, scene);
-  return scene.narratorButton;
+  return createNarratorButtonPos(scene, 0.892, 0.22, 0.75);
 }
 
 function createNarratorButtonPos(scene, x, y,scale) {
-  var indexAB_n = AudioManager.indexAB_n;
   scene.narratorButtonActions = narratorButtonActions;
   
   scene.narratorButton = scene.add.button(
     x * WIDTH,
     y * HEIGHT,
-    "button_narrator", // change to narrator button when created
+    "button_narrator",
     scene.narratorButtonActions.onClick,
     scene,
-    indexAB_n,
-    indexAB_n,
-    indexAB_n
+    AudioManager.indexNarratorOn,
+    AudioManager.indexNarratorOn,
+    AudioManager.indexNarratorOnActive
   );
   scene.narratorButton.scale.setTo(scale);
   scene.input.keyboard.addKey(Phaser.Keyboard.N).onDown.add(scene.narratorButtonActions.onClick, scene);
