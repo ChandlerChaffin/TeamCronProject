@@ -127,6 +127,7 @@ var PPScoreState = {
 	// Tab/Enter keys
 	this.keyEnter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 	this.keyTab = this.input.keyboard.addKey(Phaser.Keyboard.TAB);
+  this.keyShift = this.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
 	// focus index and button array
 	this.focusIndex = 0;
 	this.buttons = [this.homeButton, this.replayButton];
@@ -151,7 +152,8 @@ var PPScoreState = {
     },
   },
   cycleFocus: function() {
-  	this.focusIndex = (this.focusIndex + 1) % this.buttons.length;
+    const direction = this.keyShift.isDown ? -1 : 1;
+  	this.focusIndex = (this.focusIndex + direction + this.buttons.length) % this.buttons.length;
     if (narrator) {
         if (this.currentsound && this.currentsound.isPlaying) {
             this.currentsound.stop();
