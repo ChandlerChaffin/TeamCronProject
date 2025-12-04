@@ -349,6 +349,7 @@ var FFGameState = {
 	// Narrator Button 
 	this.narratorButton = createNarratorButtonPos(this,0.02,0.02,0.75);
 	// key tab cycling and entering 
+  this.keyShift = this.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
 	this.keyTAB = this.input.keyboard.addKey(Phaser.Keyboard.TAB).onDown.add(this.cycleFocus, this);
 	this.keyENTER = this.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.add(this.activateButton, this);
   },
@@ -545,8 +546,9 @@ var FFGameState = {
 	}
   },
   cycleFocus: function() {
+    const direction = this.keyShift.isDown ? -1 : 1;
   	if (this.spriteScreen){ // adding boolean spriteScreen to indicate we are cycling through sprites
-		this.focusSpriteIndex = (this.focusSpriteIndex + 1) % this.clickableSprites.length;	
+		this.focusSpriteIndex = (this.focusSpriteIndex + direction + this.clickableSprites.length) % this.clickableSprites.length;	
 		this.highlightSpriteOption();
 	}
 	else { // if not on spriteScreen we are on Question screen so we should cycle through fix it or its okay buttons 
