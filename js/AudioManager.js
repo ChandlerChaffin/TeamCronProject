@@ -9,8 +9,8 @@ var AudioManager = {
   init: function () {
     this.indexAB = 0;
     this.indexC = 1;
-    this.indexAB_n = 0;
-    this.indexC_n = 1;
+    this.indexAB_n = 2;
+    this.indexC_n = 3;
   },
 
   toggleMusic: function (screen) {
@@ -48,14 +48,14 @@ var AudioManager = {
   toggleNarrator: function (screen) {
   	narrator = !narrator;
 	if (narrator) {
-      this.indexAB_n = this.indexNarratorOn;
-      this.indexC_n = this.indexNarratorOnActive;
+      this.indexAB_n = AudioManager.indexNarratorOn;
+      this.indexC_n = AudioManager.indexNarratorOnActive;
       screen.narratorButton.setFrames(this.indexNarratorOn, this.indexNarratorOn, this.indexNarratorOnActive);
       
 	}
 	else {
-      this.indexAB_n = this.indexNarratorOff;
-      this.indexC_n = this.indexNarratorOffActive;
+      this.indexAB_n = AudioManager.indexNarratorOff;
+      this.indexC_n = AudioManager.indexNarratorOffActive;
 	  screen.narratorButton.setFrames(this.indexNarratorOff, this.indexNarratorOff, this.indexNarratorOffActive);
 	}
   },

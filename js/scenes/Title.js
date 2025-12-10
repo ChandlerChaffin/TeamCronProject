@@ -46,6 +46,8 @@ var TitleState = {
       .yoyo(true, 0)
       .loop(true);
 
+    //Initialize audio function 
+    AudioManager.init();
     // Mute button
     createMuteButton(this);
 	// Narrator button

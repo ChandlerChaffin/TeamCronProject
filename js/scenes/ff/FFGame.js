@@ -42,7 +42,9 @@ var FFGameState = {
         .tween(outlineSprite)
         .to({ alpha: 0.5 }, 800, "Linear", true, 0, -1, true);
       this.topLayer.add(outlineSprite);
-	  this.optionSpriteOutlines.push(outlineSprite);
+      if (!option.done) {
+          this.optionSpriteOutlines.push(outlineSprite);
+      }
 
       var clickableSprite = this.add.sprite(
         spriteData.position.x * WIDTH,
@@ -62,7 +64,9 @@ var FFGameState = {
 	  clickableSprite.cb = onClick;
 	  clickableSprite.nameaudio = spriteData.n_audio;
       this.middleLayer.add(clickableSprite);
-	  this.clickableSprites.push(clickableSprite);
+      if (!option.done) {
+          this.clickableSprites.push(clickableSprite);
+      }
 
       var optionSprite = {
         enabled: true,
@@ -85,8 +89,9 @@ var FFGameState = {
 
         optionSprite.extras.push(extraSprite);
       }
-
-      this.optionSprites.push(optionSprite);
+      if (!option.done) {
+          this.optionSprites.push(optionSprite);
+      }
 
       if (option.done) {
         clickableSprite.inputEnabled = false;
